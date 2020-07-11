@@ -9,7 +9,7 @@
 <body>
     <header class="navbar bg-success">
         <nav class="container">
-            <a href="" class="text-light text-decoration-none">BlogApp</a>
+            <a href="/" class="text-light text-decoration-none">BlogApp</a>
         </nav>
     </header>
     <div class="container">
