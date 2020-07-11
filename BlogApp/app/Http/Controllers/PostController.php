@@ -28,4 +28,10 @@ class PostController extends Controller
         $post->fill($form)->save();
         return redirect('/');
     }
+
+    public function show(Post $post)
+    {
+        // $post = Post::findOrFail($id);
+        return view('posts.show', ['post' => $post]);
+    }
 }
