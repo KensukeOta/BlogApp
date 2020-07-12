@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -19,9 +20,8 @@ class PostController extends Controller
         return view('posts.new');
     }
 
-    public function create(Request $request)
+    public function create(PostRequest $request)
     {
-        $this->validate($request, Post::$rules);
         $post = new Post;
         $form = $request->all();
         unset($form['_token']);
@@ -39,9 +39,8 @@ class PostController extends Controller
         return view('posts.edit', ['post' => $post]);
     }
 
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-        $this->validate($request, Post::$rules);
         $form = $request->all();
         unset($form['_token']);
         $post->fill($form)->save();
