@@ -31,7 +31,20 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        // $post = Post::findOrFail($id);
         return view('posts.show', ['post' => $post]);
+    }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit', ['post' => $post]);
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        $this->validate($request, Post::$rules);
+        $form = $request->all();
+        unset($form['_token']);
+        $post->fill($form)->save();
+        return redirect('/');
     }
 }

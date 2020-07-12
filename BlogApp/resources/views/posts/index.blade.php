@@ -12,6 +12,7 @@
             <h5 class="card-title">{{ $post->title }}</h5>
             <p class="card-text">{{ $post->body }}</p>
             <a href="{{ action('PostController@show', $post) }}" class="btn btn-success">記事を見る</a>
+            <a href="{{ action('PostController@edit', $post) }}" class="btn btn-success">編集</a>
         </div>
     </div>
     @empty
