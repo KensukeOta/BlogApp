@@ -51,3 +51,5 @@ php artisan migrate
 exit
 php artisan make:controller CommentController
 exit
+php artisan make:request CommentRequest
+exit
