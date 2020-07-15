@@ -6,10 +6,13 @@
 <h1>{{ $post->title }}</h1>
 <p>{{ nl2br(e($post->body)) }}</p>
 
-<h3>コメント</h3>
+<h3 class="my-5">コメント</h3>
 <ul>
     @forelse ($post->comments as $comment)
-    <li>{{ $comment->body }}</li>
+    <div class="border-bottom">
+        <p class="font-weight-bold">kensuke</p>
+        <p>{{ $comment->body }}</p>
+    </div>
     @empty
     <p>コメントがありません</p>
     @endforelse
