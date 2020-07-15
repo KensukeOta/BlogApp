@@ -13,7 +13,7 @@
         <!-- <img src="" class="card-img-top" alt="..."> -->
         <div class="card-body">
             <h5 class="card-title">{{ $post->title }}</h5>
-            <p class="card-text">by</p>
+            <p class="card-text">by {{ $post->user->name }}</p>
             <a href="{{ action('PostController@show', $post) }}" class="btn btn-success">記事を見る</a>
             <a href="{{ action('PostController@edit', $post) }}" class="btn btn-success">編集</a>
             <a href="#" class="btn btn-success del" data-id="{{ $post->id }}">削除</a>
