@@ -53,3 +53,10 @@ php artisan make:controller CommentController
 exit
 php artisan make:request CommentRequest
 exit
+ls
+php artisan make:migration add_user_id_to_comments_table --table=comments
+php artisan migrate
+exit
+php artisan migrate:rollback
+php artisan migrate
+exit
