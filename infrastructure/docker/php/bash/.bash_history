@@ -1,9 +1,5 @@
 ls
-php artisan make:controller PostController
-exit
-php artisan make:model Post --migration
-exit
-php artisan migrate
-exit
-php artisan make:request PostRequest
+composer require laravel/ui
+php artisan ui vue --auth
+npm install && npm run dev
 exit
