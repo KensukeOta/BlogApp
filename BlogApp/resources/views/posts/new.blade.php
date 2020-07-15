@@ -5,6 +5,7 @@
 @section('content')
 <form action="" method="post">
     @csrf
+    <input type="hidden" name="user_id" value="{{ $user->id }}">
     <input type="text" name="title" class="form-control my-3" placeholder="タイトル" value="{{ old('title') }}">
     @error('title')
     <p class="text-danger">{{ $message }}</p>

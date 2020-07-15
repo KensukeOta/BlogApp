@@ -13,4 +13,9 @@ class Post extends Model
         'title' => 'required|min:1|max:50',
         'body' => 'required|min:1|max:1000',
     );
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
