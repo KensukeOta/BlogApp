@@ -1,9 +1,32 @@
-ls
-php artisan make:controller PostController
-exit
-php artisan make:model Post --migration
-exit
+php artisan test
+php artisan test
 php artisan migrate
+php artisan test
+php artisan test
 exit
-php artisan make:request PostRequest
+php artisan test
+php artisan test
+php artisan test
+exit
+php artisan test
+php artisan test
+php artisan test
+php artisan config:cache
+php artisan test
+exit
+php artisan test
+exit
+php artisan test
+php artisan test
+php artisan test
+php artisan test
+php artisan test
+php artisan config:chche
+php artisan config：cache
+php artisan test
+php artisan test
+php artisan test
+php artisan test
+php artisan test
+php artisan test
 exit
