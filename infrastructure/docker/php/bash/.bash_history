@@ -46,3 +46,6 @@ exit
 php artisan migrate
 >>>>>>> 102388dbc6d7cbfa7ba381a0057079c3f0a5e1d5
 exit
+php artisan make:model Comment --migration
+php artisan migrate
+exit
