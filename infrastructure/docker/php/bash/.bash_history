@@ -1,5 +1,2 @@
-ls
-composer require laravel/ui
-php artisan ui vue --auth
-npm install && npm run dev
+php artisan make:controller UserController
 exit

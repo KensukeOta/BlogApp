@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PostController@index');
+Route::get('/', 'PostController@index')->middleware('auth');
 
 Route::get('/posts/new', 'PostController@new');
 Route::post('/posts/new', 'PostController@create');
@@ -25,5 +25,7 @@ Route::patch('/posts/{post}', 'PostController@update');
 
 Route::delete('/posts/{post}', 'PostController@destroy');
 Auth::routes();
+
+Route::get('/logout', 'UserController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');

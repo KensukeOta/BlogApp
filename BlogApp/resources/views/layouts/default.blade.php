@@ -10,6 +10,7 @@
     <header class="navbar bg-success">
         <nav class="container">
             <a href="/" class="text-light text-decoration-none">BlogApp</a>
+            <a href="/logout" class="text-light text-decoration-none">ログアウト</a>
         </nav>
     </header>
     <div class="container">
