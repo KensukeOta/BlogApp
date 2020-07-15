@@ -5,19 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
     //
     public function index(Request $request)
     {
+        $user = Auth::user();
         $posts = Post::orderBy('created_at', 'desc')->get();
-        return view('posts.index', ['posts' => $posts]);
+        return view('posts.index', ['posts' => $posts, 'user' => $user]);
     }
 
     public function new()
     {
-        return view('posts.new');
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view('posts.new', ['user' => $user]);
+        } else {
+            return redirect('/login');
+        }
     }
 
     public function create(PostRequest $request)
@@ -31,12 +38,18 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return view('posts.show', ['post' => $post]);
+        $user = Auth::user();
+        return view('posts.show', ['post' => $post, 'user' => $user]);
     }
 
     public function edit(Post $post)
     {
-        return view('posts.edit', ['post' => $post]);
+        $user = Auth::user();
+        if ($user->id === $post->user_id) {
+            return view('posts.edit', ['post' => $post, 'user' => $user]);
+        } else {
+            return redirect('/');
+        }
     }
 
     public function update(PostRequest $request, Post $post)

@@ -20,7 +20,12 @@ Route::post('/posts/new', 'PostController@create');
 
 Route::get('/posts/{post}', 'PostController@show')->where('post', '[0-9]+');
 
-Route::get('/posts/{post}/edit', 'PostController@edit');
+Route::get('/posts/{post}/edit', 'PostController@edit')->middleware('auth');
 Route::patch('/posts/{post}', 'PostController@update');
 
 Route::delete('/posts/{post}', 'PostController@destroy');
+Auth::routes();
+
+Route::get('/logout', 'UserController@logout');
+
+Route::get('/home', 'HomeController@index')->name('home');
