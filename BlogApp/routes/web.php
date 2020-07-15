@@ -24,6 +24,9 @@ Route::get('/posts/{post}/edit', 'PostController@edit')->middleware('auth');
 Route::patch('/posts/{post}', 'PostController@update');
 
 Route::delete('/posts/{post}', 'PostController@destroy');
+
+Route::post('/posts/{post}', 'CommentController@create');
+
 Auth::routes();
 
 Route::get('/logout', 'UserController@logout');

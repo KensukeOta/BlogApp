@@ -49,3 +49,5 @@ exit
 php artisan make:model Comment --migration
 php artisan migrate
 exit
+php artisan make:controller CommentController
+exit

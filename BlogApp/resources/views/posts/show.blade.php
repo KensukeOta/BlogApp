@@ -7,6 +7,13 @@
 <p>{{ nl2br(e($post->body)) }}</p>
 
 <h3>コメント</h3>
+<ul>
+    @forelse ($post->comments as $comment)
+    <li>{{ $comment->body }}</li>
+    @empty
+    <p>コメントがありません</p>
+    @endforelse
+</ul>
 <form action="" method="post">
     @csrf
     <input type="hidden" name="post_id" value="{{ $post->id }}">
