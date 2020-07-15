@@ -19,8 +19,12 @@ class PostController extends Controller
 
     public function new()
     {
-        $user = Auth::user();
-        return view('posts.new', ['user' => $user]);
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view('posts.new', ['user' => $user]);
+        } else {
+            return redirect('/login');
+        }
     }
 
     public function create(PostRequest $request)
