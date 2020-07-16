@@ -10,7 +10,7 @@
 <ul>
     @forelse ($post->comments as $comment)
     <div class="border-bottom">
-        <p class="font-weight-bold">kensuke</p>
+        <p class="font-weight-bold">{{ $comment->user->name }}</p>
         <p>{{ $comment->body }}</p>
     </div>
     @empty
