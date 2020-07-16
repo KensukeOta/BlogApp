@@ -1,2 +1,2 @@
-php artisan make:controller ImageController
+php artisan storage:link
 exit
