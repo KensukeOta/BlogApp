@@ -32,6 +32,7 @@
     @empty
     <p>現在、記事が投稿されていません。</p>
     @endforelse
+    <nav class="my-3">{{ $posts->links() }}</nav>
 </div>
 <script src="/js/main.js"></script>
 @endsection
