@@ -17,13 +17,18 @@
     <p>コメントがありません</p>
     @endforelse
 </ul>
+@if (Auth::check())
 <form action="" method="post">
     @csrf
     <input type="hidden" name="post_id" value="{{ $post->id }}">
-    <textarea name="body" class="form-control my-3" placeholder="コメントを入力"></textarea>
+    <input type="hidden" name="user_id" value="{{ $user->id }}">
+    <textarea name="body" class="form-control my-3" placeholder="コメントを入力">{{ old('body') }}</textarea>
     @error('body')
-    <p class="text-danger">{{ $message }}</p>
+        <p class="text-danger">{{ $message }}</p>
     @enderror
     <input type="submit" value="コメントする" class="form-control btn btn-outline-success">
 </form>
+@else
+    <a href="/login" class="btn btn-success">ログイン</a>
+@endif
 @endsection
