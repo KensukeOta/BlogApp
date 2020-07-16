@@ -1,3 +1,2 @@
-php artisan make:model Image --migration
-php artisan migrate
+php artisan make:controller ImageController
 exit
