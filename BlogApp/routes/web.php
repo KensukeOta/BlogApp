@@ -32,3 +32,10 @@ Auth::routes();
 Route::get('/logout', 'UserController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//画像をアップロードするページ
+Route::get('/upload', 'ImageController@input');
+//画像を保存したり画像名をDBに格納する部分
+Route::post('/upload', 'ImageController@upload');
+//保存した画像を表示するページ
+Route::get('/output', 'ImageController@output');
