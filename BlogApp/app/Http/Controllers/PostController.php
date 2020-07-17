@@ -14,7 +14,7 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(2);
         return view('posts.index', ['posts' => $posts, 'user' => $user]);
     }
 
@@ -78,7 +78,7 @@ class PostController extends Controller
     public function result(Request $request)
     {
         $user = Auth::user();
-        $posts = Post::where('title', 'LIKE' , '%' . $request->search . '%')->orderBy('created_at', 'desc')->get();
+        $posts = Post::where('title', 'LIKE' , '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(2);
         return view('posts.search', ['user' => $user, 'posts' => $posts]);
     }
 }
