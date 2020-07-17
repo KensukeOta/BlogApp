@@ -33,5 +33,6 @@
     <p>記事が見つかりませんでした</p>
     @endforelse
 </div>
+<p>{{ $posts->links() }}</p>
 <script src="/js/main.js"></script>
 @endsection
