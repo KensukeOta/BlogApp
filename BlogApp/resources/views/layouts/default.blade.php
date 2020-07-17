@@ -10,6 +10,9 @@
     <header class="navbar bg-success">
         <nav class="container">
             <a href="/" class="text-light text-decoration-none">BlogApp</a>
+            <form class="d-flex">
+                <input class="form-control mr-2" type="search" placeholder="検索" aria-label="Search">
+            </form>
             @if (Auth::check())
             <a href="/logout" class="text-light text-decoration-none">ログアウト</a>
             @else
