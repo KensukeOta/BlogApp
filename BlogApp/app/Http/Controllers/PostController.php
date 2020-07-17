@@ -74,4 +74,11 @@ class PostController extends Controller
         $posts = Post::orderBy('created_at', 'desc')->get();
         return view('posts.search', ['posts' => $posts, 'user' => $user]);
     }
+
+    public function result(Request $request)
+    {
+        $user = Auth::user();
+        $posts = Post::where('title', 'LIKE' , '%' . $request->search . '%')->orderBy('created_at', 'desc')->get();
+        return view('posts.search', ['user' => $user, 'posts' => $posts]);
+    }
 }
