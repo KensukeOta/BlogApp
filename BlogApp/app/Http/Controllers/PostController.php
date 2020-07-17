@@ -67,4 +67,11 @@ class PostController extends Controller
         $post->delete();
         return redirect('/');
     }
+
+    public function search(Request $request)
+    {
+        $user = Auth::user();
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('posts.search', ['posts' => $posts, 'user' => $user]);
+    }
 }

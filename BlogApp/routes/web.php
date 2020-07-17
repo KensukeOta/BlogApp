@@ -27,6 +27,8 @@ Route::delete('/posts/{post}', 'PostController@destroy');
 
 Route::post('/posts/{post}', 'CommentController@create');
 
+Route::get('/search', 'PostController@search');
+
 Auth::routes();
 
 Route::get('/logout', 'UserController@logout');
