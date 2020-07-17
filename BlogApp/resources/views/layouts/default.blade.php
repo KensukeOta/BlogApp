@@ -10,6 +10,11 @@
     <header class="navbar bg-success">
         <nav class="container">
             <a href="/" class="text-light text-decoration-none">BlogApp</a>
+            @if (Request::is('/'))
+            <form class="d-flex">
+                <input type="search" placeholder="検索" aria-label="Search">
+            </form>
+            @endif
             @if (Auth::check())
             <a href="/logout" class="text-light text-decoration-none">ログアウト</a>
             @else
