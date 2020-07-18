@@ -14,7 +14,12 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <form action="/home" method="post" enctype="multipart/form-data">
+                        <p>プロフィール画像の変更</p>
+                        @csrf 
+                        <input type="file" name="path">
+                        <input type="submit" value="変更する">
+                    </form>
                 </div>
             </div>
         </div>
