@@ -21,7 +21,7 @@
                         <input type="submit" value="変更する">
                     </form>
                     @error('path')
-                    <p>{{ $message }}</p>
+                    <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
             </div>

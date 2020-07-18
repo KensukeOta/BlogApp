@@ -28,4 +28,13 @@ class ProfileRequest extends FormRequest
             'path' => 'file|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'path.mimes' => '画像は、jpeg、png、jpg、gifタイプのファイルである必要があります',
+            'path.image' => 'ファイルは画像である必要があります',
+        ];
+    }
+
 }
