@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class UserController extends Controller
 {
@@ -12,5 +14,17 @@ class UserController extends Controller
     {
         Auth::logout();
         return redirect('/');
+    }
+
+    public function store(ProfileRequest $request)
+    {
+        $originalImg = $request->path;
+
+        if ($originalImg->isValid()) {
+            $filePath = $originalImg->store('public');
+            Auth::user()->path = str_replace('public/', '', $filePath);
+            Auth::user()->save();
+            return redirect('/home')->with('success', '新しいプロフィールを登録しました');
+        }
     }
 }

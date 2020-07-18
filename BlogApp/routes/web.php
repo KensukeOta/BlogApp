@@ -34,4 +34,6 @@ Auth::routes();
 
 Route::get('/logout', 'UserController@logout');
 
+Route::post('/home', 'UserController@store')->middleware('auth');
+
 Route::get('/home', 'HomeController@index')->name('home');
