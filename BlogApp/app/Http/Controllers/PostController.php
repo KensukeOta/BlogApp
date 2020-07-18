@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -75,7 +76,7 @@ class PostController extends Controller
         return view('posts.search', ['posts' => $posts, 'user' => $user]);
     }
 
-    public function result(Request $request)
+    public function result(SearchRequest $request)
     {
         $user = Auth::user();
         $posts = Post::where('title', 'LIKE' , '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(2);

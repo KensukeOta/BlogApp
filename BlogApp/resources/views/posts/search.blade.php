@@ -7,6 +7,9 @@
     <form action="" method="post">
         @csrf
         <input type="search" name="search" class="form-control my-3" placeholder="検索" value="{{ old('search') }}">
+        @error('search')
+        <p class="text-danger">{{ $message }}</p>
+        @enderror
     </form>
     @forelse ($posts as $post)
     <div class="card col-md-4">
