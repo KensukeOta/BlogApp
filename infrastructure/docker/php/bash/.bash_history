@@ -60,3 +60,5 @@ exit
 php artisan migrate:rollback
 php artisan migrate
 exit
+php artisan make:request SearchRequest
+exit
