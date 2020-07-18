@@ -13,7 +13,15 @@
             <a href="/" class="text-light text-decoration-none">BlogApp</a>
             <a href="/search" class="text-light">記事検索</a>
             @if (Auth::check())
-            <a href="/logout" class="text-light text-decoration-none">ログアウト</a>
+            <div class="dropdown">
+                <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                    {{ $user->name }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="/home">マイページ</a></li>
+                    <li><a class="dropdown-item" href="/logout" >ログアウト</a></li>
+                </ul>
+            </div>
             @else
             <a href="/login" class="text-light text-decoration-none">ログイン</a>
             @endif

@@ -14,6 +14,6 @@
     @error('body')
     <p class="text-danger">{{ $message }}</p>
     @enderror
-    <input type="submit" value="投稿する" class="form-control btn btn-outline-success mb-3">
+    <input type="submit" value="投稿する" class="form-control btn btn-outline-success">
 </form>
 @endsection
