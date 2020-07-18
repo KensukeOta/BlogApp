@@ -4,14 +4,15 @@
 
 @section('content')
 <h1>{{ $post->title }}</h1>
-<p>{{ nl2br(e($post->body)) }}</p>
+<p>by <img src="{{ asset('storage/' . $post->user->path) }}" style="width: 32px; height: 32px; border-radius: 50%;" class="mr-2">{{ $post->user->name }}</p>
+<p class="mt-5">{{ nl2br(e($post->body)) }}</p>
 
-<h3 class="my-5">コメント</h3>
+<h3 class="mb-2 mt-5 font-weight-bold" style="font-size: 18px;">コメント</h3>
 <ul>
     @forelse ($post->comments as $comment)
-    <div class="border-bottom">
-        <p class="font-weight-bold">{{ $comment->user->name }}</p>
-        <p>{{ $comment->body }}</p>
+    <div class="border-bottom py-3">
+        <p class="font-weight-bold"><img src="{{ asset('storage/' . $comment->user->path) }}" style="width: 32px; height: 32px; border-radius: 50%;" class="mr-2">{{ $comment->user->name }}</p>
+        <p style="font-size: 14px;" class="mb-0">{{ $comment->body }}</p>
     </div>
     @empty
     <p>コメントがありません</p>
