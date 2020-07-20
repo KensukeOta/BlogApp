@@ -12,33 +12,32 @@
                         {{ session('status') }}
                     </div>
                 @endif
-
-                @if (session('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('success') }}
-                    </div>
-                @endif
-
                 <div class="text-center">
-                    <p>現在のプロフィール画像</p>
                     @if ($user->path === NULL)
                     <img src="img/noimage.png" alt="image" style="width: 30%; height: auto;">
                     @else
                     <img src="{{ asset('storage/' . $user->path) }}" alt="image" style="width: 30%; height: auto;">
                     @endif
-
-                    <form action="/home" method="post" enctype="multipart/form-data">
-                        <p class="mt-3">プロフィール画像の変更</p>
-                        @csrf 
-                        <div>
-                            <input type="file" name="path">
-                            <input type="submit" value="変更する">
+                    <p class="my-3">{{ $user->name }}</p>
+                    <div class="status d-flex justify-content-evenly">
+                        <div class="post">
+                            <p><a href="" class="text-decoration-none text-dark">0</a></p>
+                            <p><a href="" class="text-decoration-none text-dark">投稿</a></p>
                         </div>
-                    </form>
-                    @error('path')
-                    <p class="text-danger">{{ $message }}</p>
-                    @enderror
-                </div>
+                        <div class="like">
+                            <p><a href="" class="text-decoration-none text-dark">0</a></p>
+                            <p><a href="" class="text-decoration-none text-dark">お気に入り記事</a></p>
+                        </div>
+                        <div class="follow">
+                            <p><a href="" class="text-decoration-none text-dark">0</a></p>
+                            <p><a href="" class="text-decoration-none text-dark">フォロー</a></p>
+                        </div>
+                        <div class="follower">
+                            <p><a href="" class="text-decoration-none text-dark">0</a></p>
+                            <p><a href="" class="text-decoration-none text-dark">フォロワー</a></p>
+                        </div>
+                    </div>
+                </div>         
             </div>
         </div>
     </div>
