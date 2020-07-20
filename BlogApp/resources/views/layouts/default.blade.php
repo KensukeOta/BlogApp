@@ -18,7 +18,7 @@
                     {{ $user->name }}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="/home">マイページ</a></li>
+                    <li><a class="dropdown-item" href="/user/{{ $user->name }}">マイページ</a></li>
                     <li><a class="dropdown-item" href="/logout" >ログアウト</a></li>
                 </ul>
             </div>

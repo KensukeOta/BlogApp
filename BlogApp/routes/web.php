@@ -30,10 +30,12 @@ Route::post('/posts/{post}', 'CommentController@create');
 Route::get('/search', 'PostController@search');
 Route::post('/search', 'PostController@result');
 
+Route::get('/user/{user:name}', 'UserController@show');
+
 Auth::routes();
 
 Route::get('/logout', 'UserController@logout');
 
 Route::post('/home', 'UserController@store')->middleware('auth');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
