@@ -3,7 +3,10 @@
 @section('title', $post->title . ' - BlogApp')
 
 @section('content')
-<h1>{{ $post->title }}</h1>
+<div class="d-flex justify-content-between">
+    <h1>{{ $post->title }}</h1>
+    <span>0<i class="far fa-thumbs-up ml-2"></i></span>
+</div>
 <p>by <img src="{{ asset('storage/' . $post->user->path) }}" style="width: 32px; height: 32px; border-radius: 50%;" class="mr-2">{{ $post->user->name }}</p>
 <p class="mt-5">{{ nl2br(e($post->body)) }}</p>
 

@@ -37,5 +37,4 @@
     @endforelse
 </div>
 <p>{{ $posts->links() }}</p>
-<script src="/js/main.js"></script>
 @endsection
