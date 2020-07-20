@@ -27,7 +27,7 @@
             @endif
         </nav>
     </header>
-    <div class="container my-5" style="padding: 32px; background: #fff;">
+    <div class="container" style="padding: 32px; background: #fff;">
         @yield('content')
     </div>
     
