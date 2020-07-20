@@ -1,5 +1,4 @@
-php artisan storage:link
-exit
-php artisan config:cache
-docker-compose down
+php artisan make:migration add_likes_to_posts_table --table=posts
+php artisan migrate
+exot
 exit
