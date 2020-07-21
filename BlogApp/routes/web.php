@@ -30,7 +30,8 @@ Route::post('/posts/{post}', 'CommentController@create');
 Route::get('/search', 'PostController@search');
 Route::post('/search', 'PostController@result');
 
-Route::get('/user/{user:name}', 'UserController@show');
+Route::get('/user/{user:name}', 'UserController@home');
+Route::get('/user/{user:name}/posts', 'UserController@index');
 
 Auth::routes();
 

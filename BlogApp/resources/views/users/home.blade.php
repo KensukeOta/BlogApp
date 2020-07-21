@@ -24,8 +24,8 @@
                     <p class="my-3">{{ $selectUser->name }}</p>
                     <div class="status d-flex justify-content-evenly">
                         <div class="post">
-                            <p><a href="" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->posts->count() }}</a></p>
-                            <p><a href="" class="text-decoration-none text-dark">投稿</a></p>
+                            <p><a href="{{ action('UserController@index', $selectUser) }}" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->posts->count() }}</a></p>
+                            <p><a href="{{ action('UserController@index', $selectUser) }}" class="text-decoration-none text-dark">投稿</a></p>
                         </div>
                         @if (Auth::user()->id === $selectUser->id)
                         <div class="like">

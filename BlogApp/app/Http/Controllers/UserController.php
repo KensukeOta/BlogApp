@@ -6,14 +6,22 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Post;
 
 class UserController extends Controller
 {
     //
-    public function show(User $user)
+    public function home(User $user)
     {
         $selectUser = $user;
-        return view('home', ['selectUser' => $selectUser]);
+        return view('users.home', ['selectUser' => $selectUser]);
+    }
+
+    public function index(User $user)
+    {
+        $selectUser = $user;
+        $posts = Post::where('user_id', $selectUser->id)->orderBy('created_at', 'desc')->paginate(2);
+        return view('users.index', ['selectUser' => $selectUser, 'posts' => $posts]);
     }
     
     public function store(ProfileRequest $request)
