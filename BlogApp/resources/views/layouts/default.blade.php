@@ -17,10 +17,10 @@
             @if (Auth::check())
             <div class="dropdown">
                 <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-                    {{ $user->name }}
+                    {{ Auth::user()->name }}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="/home">マイページ</a></li>
+                    <li><a class="dropdown-item" href="/user/{{ Auth::user()->name }}">マイページ</a></li>
                     <li><a class="dropdown-item" href="/logout" >ログアウト</a></li>
                 </ul>
             </div>
