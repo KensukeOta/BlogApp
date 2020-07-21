@@ -14,21 +14,11 @@
             <a href="/search" class="text-light">記事検索</a>
             @if (Auth::check())
             <div class="dropdown">
-                @if (url('/home'))
                 <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-                    {{ $loginUser->name }}
+                    {{ Auth::user()->name }}
                 </a>
-                @else
-                <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-                    {{ $user->name }}
-                </a>
-                @endif
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    @if (url('/home'))
-                    <li><a class="dropdown-item" href="/user/{{ $loginUser->name }}">マイページ</a></li>
-                    @else
-                    <li><a class="dropdown-item" href="/user/{{ $user->name }}">マイページ</a></li>
-                    @endif
+                    <li><a class="dropdown-item" href="/user/{{ Auth::user()->name }}">マイページ</a></li>
                     <li><a class="dropdown-item" href="/logout" >ログアウト</a></li>
                 </ul>
             </div>

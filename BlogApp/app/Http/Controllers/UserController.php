@@ -12,9 +12,8 @@ class UserController extends Controller
     //
     public function show(User $user)
     {
-        $loginUser = Auth::user();
         $selectUser = $user;
-        return view('home', ['loginUser' => $loginUser, 'selectUser' => $selectUser]);
+        return view('home', ['selectUser' => $selectUser]);
     }
     
     public function store(ProfileRequest $request)
