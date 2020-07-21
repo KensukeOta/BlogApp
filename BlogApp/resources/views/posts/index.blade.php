@@ -14,7 +14,7 @@
         <div class="card-body">
             <div class="d-flex justify-content-between">
                 <h5 class="card-title">{{ $post->title }}</h5>
-                <span>0<i class="far fa-thumbs-up ml-2"></i></span>
+                <span><i class="far fa-thumbs-up ml-2"></i></span>
             </div>
             <p class="card-text">by {{ $post->user->name }}</p>
             <a href="{{ action('PostController@show', $post) }}" class="btn btn-success">記事を見る</a>
