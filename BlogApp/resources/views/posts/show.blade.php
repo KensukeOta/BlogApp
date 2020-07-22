@@ -10,7 +10,7 @@
 <p>by <img src="{{ asset('storage/' . $post->user->path) }}" style="width: 32px; height: 32px; border-radius: 50%;" class="mr-2">{{ $post->user->name }}</p>
 <p class="mt-5">{{ nl2br(e($post->body)) }}</p>
 <div id="app">
-    <like></like>
+    <like :post-id="{{ json_encode($post->id) }}"></like>
 </div>
 
 <h3 class="mb-2 mt-5 font-weight-bold" style="font-size: 18px;">コメント</h3>
