@@ -42,7 +42,18 @@ class PostController extends Controller
     {
         $user = \Auth::user();
         $comments = Comment::all();
-        return view('posts.show', ['post' => $post, 'user' => $user, 'comments' => $comments]);
+
+        $post->load('likes');
+
+        $defaultCount = count($post->likes);
+        $defaultLiked = $post->likes->where('user_id', $user->id)->first();
+        if ($defaultLiked === 0) {
+            $defaultLiked = false;
+        } else {
+            $defaultLiked = true;
+        }
+
+        return view('posts.show', ['post' => $post, 'user' => $user, 'comments' => $comments, 'defaultLiked' => $defaultLiked, 'defaultCount' => $defaultCount]);
     }
 
     public function edit(Post $post)
