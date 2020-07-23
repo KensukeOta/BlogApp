@@ -29,7 +29,7 @@
                         </div>
                         @if (Auth::user()->id === $selectUser->id)
                         <div class="like">
-                            <p><a href="" class="text-decoration-none font-weight-bold text-dark">0</a></p>
+                            <p><a href="" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->likes->count() }}</a></p>
                             <p><a href="" class="text-decoration-none text-dark">お気に入り記事</a></p>
                         </div>
                         @endif
