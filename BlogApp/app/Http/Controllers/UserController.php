@@ -7,6 +7,7 @@ use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Post;
+use App\Like;
 
 class UserController extends Controller
 {
@@ -22,6 +23,14 @@ class UserController extends Controller
         $selectUser = $user;
         $posts = Post::where('user_id', $selectUser->id)->orderBy('created_at', 'desc')->paginate(2);
         return view('users.index', ['selectUser' => $selectUser, 'posts' => $posts]);
+    }
+
+    public function like(User $user, Post $post, Like $like)
+    {
+        $selectUser = $user;
+        $posts = Post::where('user_id', $selectUser->id)->has('likes')->orderBy('created_at', 'desc')->paginate(2);
+    
+        return view('users.like', ['selectUser' => $selectUser, 'posts' => $posts]);
     }
     
     public function store(ProfileRequest $request)
