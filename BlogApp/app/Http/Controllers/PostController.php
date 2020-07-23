@@ -40,7 +40,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $user = Auth::user();
+        $user = \Auth::user();
         $comments = Comment::all();
         return view('posts.show', ['post' => $post, 'user' => $user, 'comments' => $comments]);
     }
