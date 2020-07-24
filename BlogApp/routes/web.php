@@ -32,7 +32,7 @@ Route::post('/search', 'PostController@result');
 
 Route::get('/user/{user:name}', 'UserController@home');
 Route::get('/user/{user:name}/posts', 'UserController@index');
-Route::get('/user/{user:name}/favorites/posts', 'UserController@like');
+Route::get('/user/{user:name}/favorites/posts', 'UserController@like')->middleware('auth');
 
 Auth::routes();
 

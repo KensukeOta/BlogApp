@@ -10,12 +10,19 @@
 <p>by <img src="{{ asset('storage/' . $post->user->path) }}" style="width: 32px; height: 32px; border-radius: 50%;" class="mr-2">{{ $post->user->name }}</p>
 <p class="mt-5">{{ nl2br(e($post->body)) }}</p>
 <div id="app">
+    @if (Auth::check())
     <like
      :post-id="{{ json_encode($post->id) }}"
      :user-id="{{ json_encode($user->id) }}"
      :default-Liked="{{ json_encode($defaultLiked) }}"
      :default-Count="{{ json_encode($defaultCount) }}"
      ></like>
+     @else
+     <like
+     :post-id="{{ json_encode($post->id) }}"
+     :default-Count="{{ json_encode($defaultCount) }}"
+     ></like>
+     @endif
 </div>
 
 <h3 class="mb-2 mt-5 font-weight-bold" style="font-size: 18px;">コメント</h3>
