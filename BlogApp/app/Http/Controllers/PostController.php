@@ -41,8 +41,18 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $user = Auth::user();
+
+        $post->load('likes');
+        $defaultLiked = $post->likes->where('user_id', $user->id)->first();
+        // まだ、いいねボタンが押されていない場合
+        if (count([$defaultLiked]) === 0) {
+            $defaultLiked = false; 
+        } else {
+            $defaultLiked = true;
+        }
+        
         $comments = Comment::all();
-        return view('posts.show', ['post' => $post, 'user' => $user, 'comments' => $comments]);
+        return view('posts.show', ['post' => $post, 'user' => $user, 'comments' => $comments, 'defaultLiked' => $defaultLiked]);
     }
 
     public function edit(Post $post)

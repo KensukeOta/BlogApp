@@ -16,4 +16,13 @@ class LikeController extends Controller
 
         return response()->json([]);
     }
+
+    public function unlike(Post $post, Request $request)
+    {
+        // ログインユーザーのuser_idと、その記事のpost_idが同じレコードを見つける
+        $like = Like::where('user_id', $request->user_id)->where('post_id', $post->id)->first();
+        $like->delete();
+
+        return response()->json([]);
+    }
 }

@@ -1947,14 +1947,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['postId', 'userId'],
+  props: ['postId', 'userId', 'defaultLiked'],
+  data: function data() {
+    return {
+      liked: false
+    };
+  },
+  created: function created() {
+    this.liked = this.defaultLiked;
+  },
   methods: {
-    submit: function submit(postId) {
+    like: function like(postId) {
+      var _this = this;
+
       var url = "/api/posts/".concat(postId, "/like");
       axios.post(url, {
         user_id: this.userId
-      }).then(function (response) {})["catch"](function (error) {
+      }).then(function (response) {
+        _this.liked = true;
+      })["catch"](function (error) {
+        alert(error);
+      });
+    },
+    unlike: function unlike(postId) {
+      var _this2 = this;
+
+      var url = "/api/posts/".concat(postId, "/unlike");
+      axios.post(url, {
+        user_id: this.userId
+      }).then(function (response) {
+        _this2.liked = false;
+      })["catch"](function (error) {
         alert(error);
       });
     }
@@ -37603,19 +37628,33 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-primary",
-        attrs: { type: "button" },
-        on: {
-          click: function($event) {
-            return _vm.submit(_vm.postId)
-          }
-        }
-      },
-      [_vm._v("いいね")]
-    )
+    !_vm.liked
+      ? _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.like(_vm.postId)
+              }
+            }
+          },
+          [_vm._v("like")]
+        )
+      : _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.unlike(_vm.postId)
+              }
+            }
+          },
+          [_vm._v("liked")]
+        )
   ])
 }
 var staticRenderFns = []
