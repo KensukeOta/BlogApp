@@ -14,15 +14,21 @@ class LikeController extends Controller
         // いいねボタンを押した時、likesテーブルにuser_idカラムとpost_idカラムを追加
         $like = Like::create(['user_id' => $request->user_id, 'post_id' => $post->id]);
 
-        return response()->json([]);
+        $likeCount = count(Like::where('post_id', $post->id)->get());
+
+        return response()->json(['likeCount' => $likeCount]);
     }
 
     public function unlike(Post $post, Request $request)
     {
         // ログインユーザーのuser_idと、その記事のpost_idが同じレコードを見つける
         $like = Like::where('user_id', $request->user_id)->where('post_id', $post->id)->first();
-        $like->delete();
+        if ($like != null) {
+            $like->delete();
+        }
 
-        return response()->json([]);
+        $likeCount = count(Like::where('post_id', $post->id)->get());
+        
+        return response()->json(['likeCount' => $likeCount]);
     }
 }

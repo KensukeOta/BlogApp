@@ -43,6 +43,8 @@ class PostController extends Controller
         $user = Auth::user();
 
         $post->load('likes');
+
+        $defaultCount = count($post->likes);
         $defaultLiked = $post->likes->where('user_id', $user->id)->first();
         // まだ、いいねボタンが押されていない場合
         if (count([$defaultLiked]) === 0) {
@@ -50,9 +52,9 @@ class PostController extends Controller
         } else {
             $defaultLiked = true;
         }
-        
+
         $comments = Comment::all();
-        return view('posts.show', ['post' => $post, 'user' => $user, 'comments' => $comments, 'defaultLiked' => $defaultLiked]);
+        return view('posts.show', ['post' => $post, 'user' => $user, 'comments' => $comments, 'defaultLiked' => $defaultLiked, 'defaultCount' => $defaultCount]);
     }
 
     public function edit(Post $post)
