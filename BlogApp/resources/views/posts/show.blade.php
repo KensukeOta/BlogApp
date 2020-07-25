@@ -8,6 +8,7 @@
     <div id="app">
         <like
         :post-id="{{ json_encode($post->id) }}"
+        :user-id="{{ json_encode($user->id) }}"
         ></like>
     </div>
 </div>

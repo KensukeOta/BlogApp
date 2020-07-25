@@ -6,13 +6,15 @@
 
 <script>
     export default {
-        props: ['postId'],
+        props: ['postId', 'userId'],
         
         methods: {
             submit(postId) {
                 let url = `/api/posts/${postId}/like`
 
-                axios.post(url)
+                axios.post(url, {
+                    user_id: this.userId
+                })
                 .then(response => {
 
                 })
