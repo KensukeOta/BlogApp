@@ -1,2 +1,2 @@
-php artisan migrate
+php artisan make:controller LikeController
 exit
