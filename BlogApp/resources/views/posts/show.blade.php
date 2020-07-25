@@ -6,7 +6,9 @@
 <div class="d-flex justify-content-between">
     <h1>{{ $post->title }}</h1>
     <div id="app">
-        <like></like>
+        <like
+        :post-id="{{ json_encode($post->id) }}"
+        ></like>
     </div>
 </div>
 <p>by <img src="{{ asset('storage/' . $post->user->path) }}" style="width: 32px; height: 32px; border-radius: 50%;" class="mr-2">{{ $post->user->name }}</p>

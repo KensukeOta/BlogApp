@@ -6,6 +6,8 @@
 
 <script>
     export default {
+        props: ['postId'],
+        
         mounted() {
             console.log('Component mounted.')
         }
