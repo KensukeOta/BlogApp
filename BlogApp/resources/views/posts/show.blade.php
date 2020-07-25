@@ -3,13 +3,14 @@
 @section('title', $post->title . ' - BlogApp')
 
 @section('content')
-<h1>{{ $post->title }}</h1>
+<div class="d-flex justify-content-between">
+    <h1>{{ $post->title }}</h1>
+    <div id="app">
+        <like></like>
+    </div>
+</div>
 <p>by <img src="{{ asset('storage/' . $post->user->path) }}" style="width: 32px; height: 32px; border-radius: 50%;" class="mr-2">{{ $post->user->name }}</p>
 <p class="mt-5">{{ nl2br(e($post->body)) }}</p>
-
-<div id="app">
-    <example-component></example-component>
-</div>
 
 <h3 class="mb-2 mt-5 font-weight-bold" style="font-size: 18px;">コメント</h3>
 <ul>
