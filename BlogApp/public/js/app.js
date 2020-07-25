@@ -37636,7 +37636,7 @@ var render = function() {
       ? _c(
           "button",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn btn-outline-primary",
             attrs: { type: "button" },
             on: {
               click: function($event) {

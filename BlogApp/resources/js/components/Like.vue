@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button v-if="!liked" type="button" class="btn btn-primary" v-on:click="like(postId)">いいね{{ likeCount }}</button>
+        <button v-if="!liked" type="button" class="btn btn-outline-primary" v-on:click="like(postId)">いいね{{ likeCount }}</button>
         <button v-else type="button" class="btn btn-primary" v-on:click="unlike(postId)">いいね{{ likeCount }}</button>
     </div>
 </template>
