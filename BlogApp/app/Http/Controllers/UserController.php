@@ -31,7 +31,11 @@ class UserController extends Controller
         $posts = Post::whereHas('likes', function ($query) {
             $query->where('user_id', Auth::user()->id);
         })->orderBy('created_at', 'desc')->paginate(2);
-        return view('users.like', ['selectUser' => $selectUser, 'posts' => $posts]);
+        if (Auth::user()->id === $selectUser->id) {
+            return view('users.like', ['selectUser' => $selectUser, 'posts' => $posts]);
+        } else {
+            return redirect('/');
+        }
     }
     
     public function store(ProfileRequest $request)
