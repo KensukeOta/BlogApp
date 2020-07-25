@@ -23,6 +23,13 @@ class UserController extends Controller
         $posts = Post::where('user_id', $selectUser->id)->orderBy('created_at', 'desc')->paginate(2);
         return view('users.index', ['selectUser' => $selectUser, 'posts' => $posts]);
     }
+
+    public function like(User $user, Post $post)
+    {
+        $selectUser = $user;
+        $posts = Post::has('likes')->orderBy('created_at', 'desc')->paginate(2);
+        return view('users.like', ['selectUser' => $selectUser, 'posts' => $posts]);
+    }
     
     public function store(ProfileRequest $request)
     {
