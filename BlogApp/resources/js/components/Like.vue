@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button type="button" class="btn btn-primary">いいね</button>
+        <button type="button" class="btn btn-primary" v-on:click="submit(postId)">いいね</button>
     </div>
 </template>
 
@@ -8,8 +8,18 @@
     export default {
         props: ['postId'],
         
-        mounted() {
-            console.log('Component mounted.')
+        methods: {
+            submit(postId) {
+                let url = `/api/posts/${postId}/like`
+
+                axios.post(url)
+                .then(response => {
+
+                })
+                .catch(error => {
+                    alert(error);
+                });
+            }
         }
     }
 </script>
