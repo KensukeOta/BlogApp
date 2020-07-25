@@ -31,7 +31,7 @@
                     this.likeCount = response.data.likeCount
                 })
                 .catch(error => {
-                    alert(error);
+                    alert('ログインしてください');
                 });
             },  
             unlike(postId) {
@@ -45,7 +45,7 @@
                     this.likeCount = response.data.likeCount
                 })
                 .catch(error => {
-                    alert(error);
+                    alert('ログインしてください');
                 });
             }
         }

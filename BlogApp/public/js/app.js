@@ -1971,7 +1971,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.liked = true;
         _this.likeCount = response.data.likeCount;
       })["catch"](function (error) {
-        alert(error);
+        alert('ログインしてください');
       });
     },
     unlike: function unlike(postId) {
@@ -1984,7 +1984,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.liked = false;
         _this2.likeCount = response.data.likeCount;
       })["catch"](function (error) {
-        alert(error);
+        alert('ログインしてください');
       });
     }
   }
