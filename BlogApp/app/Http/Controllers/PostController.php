@@ -54,7 +54,6 @@ class PostController extends Controller
                 $defaultLiked = true;
             }
         }
-
         $comments = Comment::all();
         if (Auth::check()) {
             return view('posts.show', ['post' => $post, 'user' => $user, 'comments' => $comments, 'defaultLiked' => $defaultLiked, 'defaultCount' => $defaultCount]);

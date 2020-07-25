@@ -27,7 +27,10 @@ class UserController extends Controller
     public function like(User $user, Post $post)
     {
         $selectUser = $user;
-        $posts = Post::has('likes')->orderBy('created_at', 'desc')->paginate(2);
+        // $posts = Post::has('likes')->orderBy('created_at', 'desc')->paginate(2);
+        $posts = Post::whereHas('likes', function ($query) {
+            $query->where('user_id', Auth::user()->id);
+        })->orderBy('created_at', 'desc')->paginate(2);
         return view('users.like', ['selectUser' => $selectUser, 'posts' => $posts]);
     }
     
