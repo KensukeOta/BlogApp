@@ -1923,11 +1923,16 @@ __webpack_require__.r(__webpack_exports__);
     initialIsLikedBy: {
       type: Boolean,
       "default": false
+    },
+    initialCountLikes: {
+      type: Number,
+      "default": 0
     }
   },
   data: function data() {
     return {
-      isLikedBy: this.initialIsLikedBy
+      isLikedBy: this.initialIsLikedBy,
+      countLikes: this.initialCountLikes
     };
   }
 });
@@ -37535,7 +37540,7 @@ var render = function() {
           staticClass: "fas fa-heart mr-1",
           class: { "text-danger": this.isLikedBy }
         }),
-        _vm._v("10\n  ")
+        _vm._v(_vm._s(_vm.countLikes) + "\n  ")
       ]
     )
   ])

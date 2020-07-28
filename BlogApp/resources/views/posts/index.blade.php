@@ -15,7 +15,8 @@
             <div class="d-flex justify-content-between">
                 <h5 class="card-title">{{ $post->title }}</h5>
                 <article-like
-                :initial-is-liked-by='@json($post->isLikedBy(Auth::user()))'     
+                :initial-is-liked-by='@json($post->isLikedBy(Auth::user()))'
+                :initial-count-likes='@json($post->count_likes)'     
                 >
                 </article-like>
             </div>
