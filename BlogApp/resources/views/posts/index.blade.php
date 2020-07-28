@@ -12,7 +12,10 @@
     <div class="card col-md-4">
         <!-- <img src="" class="card-img-top" alt="..."> -->
         <div class="card-body">
-            <h5 class="card-title">{{ $post->title }}</h5>
+            <div class="d-flex justify-content-between">
+                <h5 class="card-title">{{ $post->title }}</h5>
+                <article-like></article-like>
+            </div>
             <p class="card-text">by {{ $post->user->name }}</p>
             <a href="{{ action('PostController@show', $post) }}" class="btn btn-success">記事を見る</a>
             @if (Auth::check())
