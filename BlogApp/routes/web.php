@@ -30,6 +30,11 @@ Route::post('/posts/{post}', 'CommentController@create');
 Route::get('/search', 'PostController@search');
 Route::post('/search', 'PostController@result');
 
+Route::prefix('posts')->name('posts.')->group(function () {
+    Route::put('/{post}/like', 'PostController@like')->name('like')->middleware('auth');
+    Route::delete('/{post}/like', 'PostController@unlike')->name('unlike')->middleware('auth');
+});
+
 Route::get('/user/{user:name}', 'UserController@home');
 Route::get('/user/{user:name}/posts', 'UserController@index');
 
