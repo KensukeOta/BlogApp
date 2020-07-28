@@ -16,7 +16,9 @@
                 <h5 class="card-title">{{ $post->title }}</h5>
                 <article-like
                 :initial-is-liked-by='@json($post->isLikedBy(Auth::user()))'
-                :initial-count-likes='@json($post->count_likes)'     
+                :initial-count-likes='@json($post->count_likes)' 
+                :authorized='@json(Auth::check())'
+                endpoint="{{ route('posts.like', ['post' => $post]) }}"    
                 >
                 </article-like>
             </div>
