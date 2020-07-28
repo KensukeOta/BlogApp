@@ -23,4 +23,9 @@ class Post extends Model
     {
         return $this->hasMany('App\Comment');
     }
+
+    public function likes(): BelongsToMany
+    {
+        return $this->belongsToMany('App\User', 'likes')->withTimestamps();
+    }
 }
