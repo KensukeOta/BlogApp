@@ -1,5 +1,3 @@
-php artisan storage:link
-exit
-php artisan config:cache
-docker-compose down
+php artisan make:migration create_likes_table --create=likes
+php artisan migrate
 exit
