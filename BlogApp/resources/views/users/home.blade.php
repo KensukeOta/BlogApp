@@ -27,6 +27,7 @@
                             <p><a href="{{ action('UserController@index', $selectUser) }}" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->posts->count() }}</a></p>
                             <p><a href="{{ action('UserController@index', $selectUser) }}" class="text-decoration-none text-dark">投稿</a></p>
                         </div>
+
                         @if (Auth::check())
                         @if (Auth::user()->id === $selectUser->id)
                         <div class="like">
@@ -35,6 +36,7 @@
                         </div>
                         @endif
                         @endif
+
                         <div class="follow">
                             <p><a href="" class="text-decoration-none font-weight-bold text-dark">0</a></p>
                             <p><a href="" class="text-decoration-none text-dark">フォロー</a></p>
@@ -44,6 +46,7 @@
                             <p><a href="" class="text-decoration-none text-dark">フォロワー</a></p>
                         </div>
                     </div>
+
                     @if (Auth::check())
                     @if (Auth::user()->id === $selectUser->id)
                     <a href="" class="btn btn-secondary">プロフィールを編集する</a>
@@ -51,7 +54,7 @@
                     <follow-button class="ml-auto"
                     :initial-is-followed-by='@json($selectUser->isFollowedBy(Auth::user()))'
                     :authorized='@json(Auth::check())'
-                    endpoint="{{ route('users.follow', ['name' => $selectUser->name]) }}"
+                    endpoint="{{ route('users.follow', $selectUser->name) }}"
                     >
                     </follow-button>
                     @endif

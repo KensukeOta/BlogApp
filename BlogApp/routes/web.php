@@ -35,12 +35,15 @@ Route::prefix('posts')->name('posts.')->group(function () {
     Route::delete('/{post}/like', 'PostController@unlike')->name('unlike')->middleware('auth');
 });
 
-Route::get('/user/{user:name}', 'UserController@home');
-Route::get('/user/{user:name}/posts', 'UserController@index');
 
-Route::middleware('auth')->group(function () {
-    Route::put('/user/{user:name}/follow', 'UserController@follow')->name('follow');
-    Route::delete('/user/{user:name}/follow', 'UserController@unfollow')->name('unfollow');
+Route::prefix('users')->name('users.')->group(function () {
+    Route::get('/{user:name}', 'UserController@home');
+    Route::get('/{user:name}/posts', 'UserController@index');
+    Route::get('/{user:name}', 'UserController@home')->name('home');
+    Route::middleware('auth')->group(function () {
+        Route::put('/{user:name}/follow', 'UserController@follow')->name('follow');
+        Route::delete('/{user:name}/follow', 'UserController@unfollow')->name('unfollow');
+    });
 });
 Auth::routes();
 

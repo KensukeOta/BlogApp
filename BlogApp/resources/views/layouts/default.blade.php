@@ -20,7 +20,7 @@
                         {{ Auth::user()->name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="/user/{{ Auth::user()->name }}">マイページ</a></li>
+                        <li><a class="dropdown-item" href="/users/{{ Auth::user()->name }}">マイページ</a></li>
                         <li><a class="dropdown-item" href="/logout" >ログアウト</a></li>
                     </ul>
                 </div>
