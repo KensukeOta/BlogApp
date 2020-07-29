@@ -3,8 +3,8 @@
 @section('title', 'BlogApp')
 
 @section('content')
-<p class="text-center">{{ $selectUser->name }}さんのフォロー中のユーザー</p>
-@forelse ($followings as $person)
+<p class="text-center">{{ $selectUser->name }}さんのフォロワー</p>
+@forelse ($followers as $person)
 <div class="card col">
     <!-- <img src="" class="card-img-top" alt="..."> -->
     <div class="card-body">
@@ -21,7 +21,7 @@
     </div>
 </div>
 @empty
-<p>フォロー中のユーザーはいません</p>
+<p>フォロワーがいません</p>
 @endforelse
 <script src="/js/main.js"></script>
 @endsection

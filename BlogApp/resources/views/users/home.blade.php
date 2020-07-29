@@ -38,8 +38,8 @@
                             <p><a href="{{ action('UserController@followings', $selectUser) }}" class="text-decoration-none text-dark">フォロー</a></p>
                         </div>
                         <div class="follower">
-                            <p><a href="" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->count_followers }}</a></p>
-                            <p><a href="" class="text-decoration-none text-dark">フォロワー</a></p>
+                            <p><a href="{{ action('UserController@followers', $selectUser) }}" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->count_followers }}</a></p>
+                            <p><a href="{{ action('UserController@followers', $selectUser) }}" class="text-decoration-none text-dark">フォロワー</a></p>
                         </div>
                     </div>
 
