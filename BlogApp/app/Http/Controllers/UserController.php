@@ -17,6 +17,13 @@ class UserController extends Controller
         return view('users.home', ['selectUser' => $selectUser]);
     }
 
+    public function index(User $user)
+    {
+        $selectUser = $user;
+        $posts = $selectUser->posts->sortByDesc('created_at');
+        return view('users.index', ['selectUser' => $selectUser, 'posts' => $posts]);
+    }
+
     // フォローをされた側のメソッド
     public function follow(Request $request, string $name)
     {
@@ -48,12 +55,6 @@ class UserController extends Controller
         return ['name' => $name];
     }
 
-    public function index(User $user)
-    {
-        $selectUser = $user;
-        $posts = Post::where('user_id', $selectUser->id)->orderBy('created_at', 'desc')->paginate(2);
-        return view('users.index', ['selectUser' => $selectUser, 'posts' => $posts]);
-    }
     
     public function store(ProfileRequest $request)
     {

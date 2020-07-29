@@ -46,8 +46,8 @@
                             <p><a href="" class="text-decoration-none text-dark">フォロワー</a></p>
                         </div>
                     </div>
-                    
-                    <follow-button class="ml-auto"
+
+                    <follow-button class="ml-auto mb-3"
                     :initial-is-followed-by='@json($selectUser->isFollowedBy(Auth::user()))'
                     :authorized='@json(Auth::check())'
                     endpoint="{{ route('users.follow', $selectUser->name) }}"
