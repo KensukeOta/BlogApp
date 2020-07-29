@@ -50,6 +50,8 @@
                     @else
                     <follow-button class="ml-auto"
                     :initial-is-followed-by='@json($selectUser->isFollowedBy(Auth::user()))'
+                    :authorized='@json(Auth::check())'
+                    endpoint="{{ route('users.follow', ['name' => $selectUser->name]) }}"
                     >
                     </follow-button>
                     @endif
