@@ -10,6 +10,7 @@
     <div class="card-body">
         <div class="d-flex justify-content-between">
             <h5 class="card-title">{{ $person->name }}</h5>
+            @if (Auth::check())
             @unless (Auth::user()->name === $person->name)
             <follow-button
             :initial-is-followed-by='@json($person->isFollowedBy(Auth::user()))'
@@ -17,6 +18,7 @@
             endpoint="{{ route('users.follow', $person->name) }}"
             ></follow-button>
             @endunless
+            @endif
         </div>
     </div>
 </div>
