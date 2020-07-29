@@ -7,6 +7,7 @@
 import "./bootstrap";
 import Vue from "vue";
 import ArticleLike from "./components/ArticleLike";
+import FollowButton from "./components/FollowButton";
  
 /**
  * The following block of code may be used to automatically register your
@@ -26,8 +27,10 @@ import ArticleLike from "./components/ArticleLike";
  */
 
 const app = new Vue({
+    name: '',
     el: "#app",
     components: {
-        ArticleLike
+        ArticleLike,
+        FollowButton,
     }
 });

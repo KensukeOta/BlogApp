@@ -27,28 +27,35 @@
                             <p><a href="{{ action('UserController@index', $selectUser) }}" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->posts->count() }}</a></p>
                             <p><a href="{{ action('UserController@index', $selectUser) }}" class="text-decoration-none text-dark">投稿</a></p>
                         </div>
-                        @if (Auth::check())
-                        @if (Auth::user()->id === $selectUser->id)
+
                         <div class="like">
-                            <p><a href="" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->likes->count() }}</a></p>
-                            <p><a href="" class="text-decoration-none text-dark">お気に入り記事</a></p>
+                            <p><a href="{{ route('users.likes', $selectUser) }}" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->likes->count() }}</a></p>
+                            <p><a href="{{ route('users.likes', $selectUser) }}" class="text-decoration-none text-dark">お気に入り記事</a></p>
                         </div>
-                        @endif
-                        @endif
+
                         <div class="follow">
-                            <p><a href="" class="text-decoration-none font-weight-bold text-dark">0</a></p>
-                            <p><a href="" class="text-decoration-none text-dark">フォロー</a></p>
+                            <p><a href="{{ action('UserController@followings', $selectUser) }}" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->count_followings  }}</a></p>
+                            <p><a href="{{ action('UserController@followings', $selectUser) }}" class="text-decoration-none text-dark">フォロー</a></p>
                         </div>
                         <div class="follower">
-                            <p><a href="" class="text-decoration-none font-weight-bold text-dark">0</a></p>
-                            <p><a href="" class="text-decoration-none text-dark">フォロワー</a></p>
+                            <p><a href="{{ action('UserController@followers', $selectUser) }}" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->count_followers }}</a></p>
+                            <p><a href="{{ action('UserController@followers', $selectUser) }}" class="text-decoration-none text-dark">フォロワー</a></p>
                         </div>
                     </div>
+
+                    <follow-button class="ml-auto mb-3"
+                    :initial-is-followed-by='@json($selectUser->isFollowedBy(Auth::user()))'
+                    :authorized='@json(Auth::check())'
+                    endpoint="{{ route('users.follow', $selectUser->name) }}"
+                    >
+                    </follow-button>  
+                      
                     @if (Auth::check())
                     @if (Auth::user()->id === $selectUser->id)
                     <a href="" class="btn btn-secondary">プロフィールを編集する</a>
                     @endif
                     @endif
+
                 </div>         
             </div>
         </div>

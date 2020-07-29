@@ -20,9 +20,77 @@ class UserController extends Controller
     public function index(User $user)
     {
         $selectUser = $user;
-        $posts = Post::where('user_id', $selectUser->id)->orderBy('created_at', 'desc')->paginate(2);
+        $posts = $selectUser->posts->sortByDesc('created_at');
         return view('users.index', ['selectUser' => $selectUser, 'posts' => $posts]);
     }
+
+    public function likes(string $name)
+    {
+        $selectUser = User::where('name', $name)->first();
+ 
+        $posts = $selectUser->likes->sortByDesc('created_at');
+ 
+        return view('users.likes', [
+            'selectUser' => $selectUser,
+            'posts' => $posts,
+        ]);
+    }
+
+    public function followings(string $name)
+    {
+        $selectUser = User::where('name', $name)->first();
+ 
+        $followings = $selectUser->followings->sortByDesc('created_at');
+ 
+        return view('users.followings', [
+            'selectUser' => $selectUser,
+            'followings' => $followings,
+        ]);
+    }
+    
+    public function followers(string $name)
+    {
+        $selectUser = User::where('name', $name)->first();
+ 
+        $followers = $selectUser->followers->sortByDesc('created_at');
+ 
+        return view('users.followers', [
+            'selectUser' => $selectUser,
+            'followers' => $followers,
+        ]);
+    }
+    
+    // フォローをされた側のメソッド
+    public function follow(Request $request, string $name)
+    {
+        $user = User::where('name', $name)->first();
+ 
+        if ($user->id === $request->user()->id)
+        {
+            return abort('404', 'Cannot follow yourself.');
+        }
+ 
+        $request->user()->followings()->detach($user);
+        $request->user()->followings()->attach($user);
+ 
+        return ['name' => $name];
+    }
+    
+    //  フォローを外された側のメソッド
+    public function unfollow(Request $request, string $name)
+    {
+        $user = User::where('name', $name)->first();
+ 
+        if ($user->id === $request->user()->id)
+        {
+            return abort('404', 'Cannot follow yourself.');
+        }
+ 
+        $request->user()->followings()->detach($user);
+ 
+        return ['name' => $name];
+    }
+
     
     public function store(ProfileRequest $request)
     {
