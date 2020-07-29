@@ -17,6 +17,37 @@ class UserController extends Controller
         return view('users.home', ['selectUser' => $selectUser]);
     }
 
+    // フォローをされた側のメソッド
+    public function follow(Request $request, string $name)
+    {
+        $user = User::where('name', $name)->first();
+ 
+        if ($user->id === $request->user()->id)
+        {
+            return abort('404', 'Cannot follow yourself.');
+        }
+ 
+        $request->user()->followings()->detach($user);
+        $request->user()->followings()->attach($user);
+ 
+        return ['name' => $name];
+    }
+    
+    //  フォローを外された側のメソッド
+    public function unfollow(Request $request, string $name)
+    {
+        $user = User::where('name', $name)->first();
+ 
+        if ($user->id === $request->user()->id)
+        {
+            return abort('404', 'Cannot follow yourself.');
+        }
+ 
+        $request->user()->followings()->detach($user);
+ 
+        return ['name' => $name];
+    }
+
     public function index(User $user)
     {
         $selectUser = $user;
