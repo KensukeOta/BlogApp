@@ -47,8 +47,11 @@
                     @if (Auth::check())
                     @if (Auth::user()->id === $selectUser->id)
                     <a href="" class="btn btn-secondary">プロフィールを編集する</a>
+                    @else
+                    <follow-button class="ml-auto"></follow-button>
                     @endif
                     @endif
+
                 </div>         
             </div>
         </div>
