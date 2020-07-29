@@ -1,3 +1,2 @@
-php artisan make:model Follow --migration
-php artisan migrate
+php artisan route:list
 exit
