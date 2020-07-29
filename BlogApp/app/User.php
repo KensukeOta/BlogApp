@@ -43,11 +43,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');
     }
 
-    public function likes()
-    {
-        return $this->hasMany('App\Like');
-    }
-
     public function followers(): BelongsToMany
     {
         return $this->belongsToMany('App\User', 'follows', 'followee_id', 'follower_id')->withTimestamps();
@@ -56,6 +51,11 @@ class User extends Authenticatable
     public function followings(): BelongsToMany
     {
         return $this->belongsToMany('App\User', 'follows', 'follower_id', 'followee_id')->withTimestamps();
+    }
+
+    public function likes(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Article', 'likes')->withTimestamps();
     }
 
     //  ユーザーをフォロー中かどうか判定するメソッド
