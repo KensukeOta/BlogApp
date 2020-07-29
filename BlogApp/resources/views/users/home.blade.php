@@ -49,7 +49,7 @@
                     <a href="" class="btn btn-secondary">プロフィールを編集する</a>
                     @else
                     <follow-button class="ml-auto"
-                    :initial-is-followed-by='@json($user->isFollowedBy(Auth::user()))'
+                    :initial-is-followed-by='@json($selectUser->isFollowedBy(Auth::user()))'
                     >
                     </follow-button>
                     @endif

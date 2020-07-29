@@ -38,6 +38,10 @@ Route::prefix('posts')->name('posts.')->group(function () {
 Route::get('/user/{user:name}', 'UserController@home');
 Route::get('/user/{user:name}/posts', 'UserController@index');
 
+Route::middleware('auth')->group(function () {
+    Route::put('/user/{user:name}/follow', 'UserController@follow')->name('follow');
+    Route::delete('/user/{user:name}/follow', 'UserController@unfollow')->name('unfollow');
+});
 Auth::routes();
 
 Route::get('/logout', 'UserController@logout');
