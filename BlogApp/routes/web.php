@@ -40,6 +40,8 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::get('/{user:name}', 'UserController@home')->name('home');
     Route::get('/{user:name}/posts', 'UserController@index');
     Route::get('/{user:name}/likes', 'UserController@likes')->name('likes');
+    Route::get('/{user:name}/followings', 'UserController@followings')->name('followings');
+    Route::get('/{user:name}/followers', 'UserController@followers')->name('followers');
     Route::middleware('auth')->group(function () {
         Route::put('/{user:name}/follow', 'UserController@follow')->name('follow');
         Route::delete('/{user:name}/follow', 'UserController@unfollow')->name('unfollow');
