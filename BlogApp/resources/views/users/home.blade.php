@@ -38,11 +38,11 @@
                         @endif
 
                         <div class="follow">
-                            <p><a href="" class="text-decoration-none font-weight-bold text-dark">0</a></p>
+                            <p><a href="" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->count_followings  }}</a></p>
                             <p><a href="" class="text-decoration-none text-dark">フォロー</a></p>
                         </div>
                         <div class="follower">
-                            <p><a href="" class="text-decoration-none font-weight-bold text-dark">0</a></p>
+                            <p><a href="" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->count_followers }}</a></p>
                             <p><a href="" class="text-decoration-none text-dark">フォロワー</a></p>
                         </div>
                     </div>
