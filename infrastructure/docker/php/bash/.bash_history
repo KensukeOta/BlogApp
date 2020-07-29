@@ -1,5 +1,2 @@
-php artisan storage:link
-exit
-php artisan config:cache
-docker-compose down
+php artisan route:list
 exit

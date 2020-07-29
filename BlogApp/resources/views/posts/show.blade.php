@@ -7,6 +7,14 @@
 <p>by <img src="{{ asset('storage/' . $post->user->path) }}" style="width: 32px; height: 32px; border-radius: 50%;" class="mr-2">{{ $post->user->name }}</p>
 <p class="mt-5">{{ nl2br(e($post->body)) }}</p>
 
+<article-like
+:initial-is-liked-by='@json($post->isLikedBy(Auth::user()))'
+:initial-count-likes='@json($post->count_likes)' 
+:authorized='@json(Auth::check())'
+endpoint="{{ route('posts.like', ['post' => $post]) }}"    
+>
+</article-like>
+
 <h3 class="mb-2 mt-5 font-weight-bold" style="font-size: 18px;">コメント</h3>
 <ul>
     @forelse ($post->comments as $comment)
