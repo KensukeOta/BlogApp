@@ -46,17 +46,17 @@
                             <p><a href="" class="text-decoration-none text-dark">フォロワー</a></p>
                         </div>
                     </div>
-
-                    @if (Auth::check())
-                    @if (Auth::user()->id === $selectUser->id)
-                    <a href="" class="btn btn-secondary">プロフィールを編集する</a>
-                    @else
+                    
                     <follow-button class="ml-auto"
                     :initial-is-followed-by='@json($selectUser->isFollowedBy(Auth::user()))'
                     :authorized='@json(Auth::check())'
                     endpoint="{{ route('users.follow', $selectUser->name) }}"
                     >
-                    </follow-button>
+                    </follow-button>  
+                      
+                    @if (Auth::check())
+                    @if (Auth::user()->id === $selectUser->id)
+                    <a href="" class="btn btn-secondary">プロフィールを編集する</a>
                     @endif
                     @endif
 
