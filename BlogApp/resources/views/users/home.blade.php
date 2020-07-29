@@ -48,7 +48,10 @@
                     @if (Auth::user()->id === $selectUser->id)
                     <a href="" class="btn btn-secondary">プロフィールを編集する</a>
                     @else
-                    <follow-button class="ml-auto"></follow-button>
+                    <follow-button class="ml-auto"
+                    :initial-is-followed-by='@json($user->isFollowedBy(Auth::user()))'
+                    >
+                    </follow-button>
                     @endif
                     @endif
 
