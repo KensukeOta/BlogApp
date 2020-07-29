@@ -55,7 +55,7 @@ class User extends Authenticatable
 
     public function likes(): BelongsToMany
     {
-        return $this->belongsToMany('App\Article', 'likes')->withTimestamps();
+        return $this->belongsToMany('App\Post', 'likes')->withTimestamps();
     }
 
     //  ユーザーをフォロー中かどうか判定するメソッド

@@ -28,14 +28,10 @@
                             <p><a href="{{ action('UserController@index', $selectUser) }}" class="text-decoration-none text-dark">投稿</a></p>
                         </div>
 
-                        @if (Auth::check())
-                        @if (Auth::user()->id === $selectUser->id)
                         <div class="like">
-                            <p><a href="" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->likes->count() }}</a></p>
-                            <p><a href="" class="text-decoration-none text-dark">お気に入り記事</a></p>
+                            <p><a href="{{ route('users.likes', $selectUser) }}" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->likes->count() }}</a></p>
+                            <p><a href="{{ route('users.likes', $selectUser) }}" class="text-decoration-none text-dark">お気に入り記事</a></p>
                         </div>
-                        @endif
-                        @endif
 
                         <div class="follow">
                             <p><a href="" class="text-decoration-none font-weight-bold text-dark">{{ $selectUser->count_followings  }}</a></p>

@@ -24,6 +24,18 @@ class UserController extends Controller
         return view('users.index', ['selectUser' => $selectUser, 'posts' => $posts]);
     }
 
+    public function likes(string $name)
+    {
+        $user = User::where('name', $name)->first();
+ 
+        $posts = $user->likes->sortByDesc('created_at');
+ 
+        return view('users.likes', [
+            'user' => $user,
+            'posts' => $posts,
+        ]);
+    }
+    
     // フォローをされた側のメソッド
     public function follow(Request $request, string $name)
     {
