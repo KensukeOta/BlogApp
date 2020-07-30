@@ -6,6 +6,19 @@
     <div class="container" style="padding: 32px; background: #fff; height: 100vh;">
     <h1>{{ $post->title }}</h1>
     <p>by <img src="{{ asset('storage/' . $post->user->path) }}" style="width: 32px; height: 32px; border-radius: 50%;" class="mr-2">{{ $post->user->name }}</p>
+    @foreach($post->tags as $tag)
+        @if($loop->first)
+        <div class="card-body pt-0 pb-4 pl-0">
+            <div class="card-text line-height">
+        @endif
+            <a href="" class="border p-1 mr-1 mt-1 text-muted">
+                {{ $tag->name }}
+            </a>
+        @if($loop->last)
+            </div>
+        </div>
+        @endif
+    @endforeach
     <p class="mt-5">{{ nl2br(e($post->body)) }}</p>
 
     <article-like
