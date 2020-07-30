@@ -1,5 +1,7 @@
 <template>
   <div>
+    <input type="hidden" name="tags" :value="tagsJson"
+    >
     <vue-tags-input
       v-model="tag"
       :tags="tags"
@@ -38,6 +40,9 @@ export default {
       return this.autocompleteItems.filter(i => {
         return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1;
       });
+    },
+    tagsJson() {
+      return JSON.stringify(this.tags)
     },
   },
 };
