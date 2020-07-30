@@ -6,10 +6,11 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body style="background: #f6f6f4;">
-    <div id="app">
+    <div id="app" style="height: 100%;">
         <header class="navbar bg-success">
             <nav class="container">
                 <a href="/" class="text-light text-decoration-none">BlogApp</a>
@@ -29,7 +30,7 @@
                 @endif
             </nav>
         </header>
-        <div class="container" style="padding: 32px; background: #fff;">
+        <div class="container" style="padding: 32px; background: #fff; height: 100vh;">
             @yield('content')
         </div>
     </div>
