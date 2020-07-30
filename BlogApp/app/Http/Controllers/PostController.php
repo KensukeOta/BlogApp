@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
+use App\Tag;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\Auth;
@@ -29,12 +30,16 @@ class PostController extends Controller
         }
     }
 
-    public function create(PostRequest $request)
+    public function create(PostRequest $request, Post $post)
     {
         $post = new Post;
         $form = $request->all();
         unset($form['_token']);
         $post->fill($form)->save();
+        $request->tags->each(function ($tagName) use ($post) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $post->tags()->attach($tag);
+        });
         return redirect('/');
     }
 
