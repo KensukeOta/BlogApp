@@ -39,11 +39,10 @@ class PostRequest extends FormRequest
             'title.max' => '５０文字以内で入力してください',
             'body.required' => '本文を入力してください',
             'body.max' => '1000文字以内で入力してください',
-            'tags.regex:/^(?!.*\s).+$/u' => 'タグ名にスペースを含むことはできません',
-            'tags.regex:/^(?!.*\/).*$/u' => 'タグ名にスラッシュ（/）を含むことはできません',
+            'tags.regex' => 'タグ名にスペースとスラッシュ( / )を含むことはできません',
         ];
     }
-    
+
     public function passedValidation()
     {
         $this->tags = collect(json_decode($this->tags))

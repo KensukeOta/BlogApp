@@ -33,9 +33,10 @@ class PostController extends Controller
     public function create(PostRequest $request, Post $post)
     {
         $post = new Post;
-        $form = $request->all();
-        unset($form['_token']);
-        $post->fill($form)->save();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->user_id = $request->user_id;
+        $post->save();
         $request->tags->each(function ($tagName) use ($post) {
             $tag = Tag::firstOrCreate(['name' => $tagName]);
             $post->tags()->attach($tag);

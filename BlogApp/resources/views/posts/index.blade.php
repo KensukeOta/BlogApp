@@ -24,6 +24,19 @@
                     </article-like>
                 </div>
                 <p class="card-text">by {{ $post->user->name }}</p>
+                @foreach($post->tags as $tag)
+                    @if($loop->first)
+                    <div class="card-body pt-0 pb-4 pl-0">
+                        <div class="card-text line-height">
+                    @endif
+                        <a href="" class="border p-1 mr-1 mt-1 text-muted">
+                            {{ $tag->name }}
+                        </a>
+                    @if($loop->last)
+                        </div>
+                    </div>
+                    @endif
+                @endforeach
                 <a href="{{ action('PostController@show', $post) }}" class="btn btn-success">記事を見る</a>
                 @if (Auth::check())
                     @if ($user->id === $post->user_id)
