@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'BlogApp')
+@section('title', $selectUser->name . 'さんのお気に入りの記事' . ' - ' . 'BlogApp')
 
 @section('content')
 <div class="row">

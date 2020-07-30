@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'BlogApp')
+@section('title', $selectUser->name . 'さんのフォロワー' . ' - ' . 'BlogApp')
 
 @section('content')
 <p class="text-center">{{ $selectUser->name }}さんのフォロワー</p>
