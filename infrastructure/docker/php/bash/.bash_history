@@ -1,3 +1,2 @@
-
-php artisan migrate
+php artisan make:model Tag
 exit

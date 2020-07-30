@@ -16,6 +16,7 @@ class PostRequest extends FormRequest
         return true;
     }
 
+    
     /**
      * Get the validation rules that apply to the request.
      *
@@ -30,7 +31,7 @@ class PostRequest extends FormRequest
             'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',
         ];
     }
-
+    
     public function messages()
     {
         return [
@@ -41,5 +42,14 @@ class PostRequest extends FormRequest
             'tags.regex:/^(?!.*\s).+$/u' => 'タグ名にスペースを含むことはできません',
             'tags.regex:/^(?!.*\/).*$/u' => 'タグ名にスラッシュ（/）を含むことはできません',
         ];
+    }
+    
+    public function passedValidation()
+    {
+        $this->tags = collect(json_decode($this->tags))
+            ->slice(0, 5)
+            ->map(function ($requestTag) {
+                return $requestTag->text;
+            });
     }
 }
