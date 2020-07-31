@@ -11,7 +11,9 @@
         @error('title')
         <p class="text-danger">{{ $message }}</p>
         @enderror
-        <article-tags-input> 
+        <article-tags-input
+        :initial-tags='@json($tagNames ?? [])'
+        > 
         </article-tags-input>
         @error('tags')
         <p class="text-danger">{{ $message }}</p>
