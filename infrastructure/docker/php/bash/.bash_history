@@ -1,2 +1,2 @@
-php artisan route:list
+php artisan make:model Tag
 exit

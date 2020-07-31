@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
+use App\Tag;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\Auth;
@@ -23,18 +24,26 @@ class PostController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            return view('posts.new', ['user' => $user]);
+            $allTagNames = Tag::all()->map(function ($tag) {
+                return ['text' => $tag->name];
+            });
+            return view('posts.new', ['user' => $user, 'allTagNames' => $allTagNames]);
         } else {
             return redirect('/login');
         }
     }
 
-    public function create(PostRequest $request)
+    public function create(PostRequest $request, Post $post)
     {
         $post = new Post;
-        $form = $request->all();
-        unset($form['_token']);
-        $post->fill($form)->save();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->user_id = $request->user_id;
+        $post->save();
+        $request->tags->each(function ($tagName) use ($post) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $post->tags()->attach($tag);
+        });
         return redirect('/');
     }
 
@@ -48,8 +57,16 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $user = Auth::user();
+        $tagNames = $post->tags->map(function ($tag) {
+            return ['text' => $tag->name];
+        });
+
+        $allTagNames = Tag::all()->map(function ($tag) {
+            return ['text' => $tag->name];
+        });
+
         if ($user->id === $post->user_id) {
-            return view('posts.edit', ['post' => $post, 'user' => $user]);
+            return view('posts.edit', ['post' => $post, 'user' => $user, 'tagNames' => $tagNames, 'allTagNames' => $allTagNames]);
         } else {
             return redirect('/');
         }
@@ -57,9 +74,16 @@ class PostController extends Controller
 
     public function update(PostRequest $request, Post $post)
     {
-        $form = $request->all();
-        unset($form['_token']);
-        $post->fill($form)->save();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->user_id = $request->user_id;
+        $post->save();
+
+        $post->tags()->detach();
+        $request->tags->each(function ($tagName) use ($post) {
+        $tag = Tag::firstOrCreate(['name' => $tagName]);
+        $post->tags()->attach($tag);
+        });
         return redirect('/');
     }
 

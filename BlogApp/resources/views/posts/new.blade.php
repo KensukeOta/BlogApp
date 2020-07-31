@@ -11,6 +11,14 @@
         @error('title')
         <p class="text-danger">{{ $message }}</p>
         @enderror
+        <article-tags-input
+        :initial-tags='@json($tagNames ?? [])'
+        :autocomplete-items='@json($allTagNames ?? [])'
+        > 
+        </article-tags-input>
+        @error('tags')
+        <p class="text-danger">{{ $message }}</p>
+        @enderror
         <textarea name="body" class="form-control my-3" rows="16" placeholder="本文">{{ old('body') }}</textarea>
         @error('body')
         <p class="text-danger">{{ $message }}</p>
