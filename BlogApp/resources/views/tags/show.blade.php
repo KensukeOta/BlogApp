@@ -1,15 +1,19 @@
 @extends('layouts.default')
 
-@section('title', 'BlogApp')
+@section('title', $tag->hashtag . ' - BlogApp')
 
 @section('content')
-<div class="container" style="padding: 32px 64px 0; background: #fff; height: 100vh;">
-    <div class="row">
-        @if (Auth::check())
-        <p class="text-center">ようこそ、{{ $user->name }}さん！</p>
-        @endif
-        <a href="/posts/new" class="btn btn-outline-success my-3">投稿する</a>
-        @forelse ($posts as $post)
+<div class="container">
+    <div class="card mt-3">
+      <div class="card-body">
+        <h2 class="h4 card-title m-0">{{ $tag->hashtag }}</h2>
+        <div class="card-text text-right">
+          {{ $tag->posts->count() }}件
+        </div>
+      </div>
+    </div>
+
+    @foreach ($tag->posts as $post)
         <div class="card col-md-4">
             <!-- <img src="" class="card-img-top" alt="..."> -->
             <div class="card-body">
@@ -29,7 +33,7 @@
                     <div class="card-body pt-0 pb-4 pl-0">
                         <div class="card-text line-height">
                     @endif
-                        <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted">
+                        <a href="" class="border p-1 mr-1 mt-1 text-muted">
                             {{ $tag->hashtag }}
                         </a>
                     @if($loop->last)
@@ -52,10 +56,6 @@
                 @endif
             </div>
         </div>
-        @empty
-        <p>現在、記事が投稿されていません。</p>
-        @endforelse
-    </div>
-<p>{{ $posts->links() }}</p>
+    @endforeach
 </div>
 @endsection
