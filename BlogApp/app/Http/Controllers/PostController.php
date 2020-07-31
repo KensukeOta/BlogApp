@@ -24,7 +24,10 @@ class PostController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            return view('posts.new', ['user' => $user]);
+            $allTagNames = Tag::all()->map(function ($tag) {
+                return ['text' => $tag->name];
+            });
+            return view('posts.new', ['user' => $user, 'allTagNames' => $allTagNames]);
         } else {
             return redirect('/login');
         }
@@ -57,8 +60,13 @@ class PostController extends Controller
         $tagNames = $post->tags->map(function ($tag) {
             return ['text' => $tag->name];
         });
+
+        $allTagNames = Tag::all()->map(function ($tag) {
+            return ['text' => $tag->name];
+        });
+
         if ($user->id === $post->user_id) {
-            return view('posts.edit', ['post' => $post, 'user' => $user, 'tagNames' => $tagNames]);
+            return view('posts.edit', ['post' => $post, 'user' => $user, 'tagNames' => $tagNames, 'allTagNames' => $allTagNames]);
         } else {
             return redirect('/');
         }
