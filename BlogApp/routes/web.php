@@ -47,6 +47,9 @@ Route::prefix('users')->name('users.')->group(function () {
         Route::delete('/{user:name}/follow', 'UserController@unfollow')->name('unfollow');
     });
 });
+
+Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
+
 Auth::routes();
 
 Route::get('/logout', 'UserController@logout');
