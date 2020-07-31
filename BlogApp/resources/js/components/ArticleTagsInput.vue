@@ -18,10 +18,16 @@ export default {
   components: {
     VueTagsInput,
   },
+  props: {
+    initialTags: {
+      type: Array,
+      default: [],
+    },
+  },
   data() {
     return {
       tag: '',
-      tags: [],
+      tags: this.initialTags,
       autocompleteItems: [{
         text: 'Spain',
       }, {
@@ -57,7 +63,7 @@ export default {
     background: transparent;
     border: 1px solid #747373;
     color: #747373;
-    margin-right: 4px;
+    margin-right: 4px;  
     border-radius: 0px;
     font-size: 13px;
   }

@@ -2073,10 +2073,16 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     VueTagsInput: _johmun_vue_tags_input__WEBPACK_IMPORTED_MODULE_0___default.a
   },
+  props: {
+    initialTags: {
+      type: Array,
+      "default": []
+    }
+  },
   data: function data() {
     return {
       tag: '',
-      tags: [],
+      tags: this.initialTags,
       autocompleteItems: [{
         text: 'Spain'
       }, {
@@ -6711,7 +6717,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.vue-tags-input .ti-tag {\n  background: transparent;\n  border: 1px solid #747373;\n  color: #747373;\n  margin-right: 4px;\n  border-radius: 0px;\n  font-size: 13px;\n}\n", ""]);
+exports.push([module.i, "\n.vue-tags-input .ti-tag {\n  background: transparent;\n  border: 1px solid #747373;\n  color: #747373;\n  margin-right: 4px;  \n  border-radius: 0px;\n  font-size: 13px;\n}\n", ""]);
 
 // exports
 
