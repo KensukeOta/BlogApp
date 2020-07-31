@@ -54,8 +54,11 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $user = Auth::user();
+        $tagNames = $post->tags->map(function ($tag) {
+            return ['text' => $tag->name];
+        });
         if ($user->id === $post->user_id) {
-            return view('posts.edit', ['post' => $post, 'user' => $user]);
+            return view('posts.edit', ['post' => $post, 'user' => $user, 'tagNames' => $tagNames]);
         } else {
             return redirect('/');
         }
