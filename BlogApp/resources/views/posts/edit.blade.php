@@ -14,6 +14,7 @@
         @enderror
         <article-tags-input
         :initial-tags='@json($tagNames ?? [])'
+        :autocomplete-items='@json($allTagNames ?? [])'
         > 
         </article-tags-input>
         @error('tags')
