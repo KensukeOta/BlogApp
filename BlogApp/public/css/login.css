@@ -88,7 +88,7 @@ form{
 	bottom: -2px;
 	width: 0%;
 	height: 2px;
-	background-color: #38d39f;
+	background-color: #38C172;
 	transition: .4s;
 }
 
@@ -110,7 +110,7 @@ form{
 }
 
 .input-div.focus > .i > i{
-	color: #38d39f;
+	color: #38C172;
 }
 
 .input-div > div > input{
@@ -142,7 +142,7 @@ a{
 }
 
 a:hover{
-	color: #38d39f;
+	color: #38C172;
 }
 
 .submit{
