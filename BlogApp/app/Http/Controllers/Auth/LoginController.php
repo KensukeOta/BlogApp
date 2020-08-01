@@ -20,6 +20,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+    use Laravel\Socialite\Facades\Socialite;
 
     /**
      * Where to redirect users after login.
@@ -36,5 +37,11 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    //  Googleのアカウント選択画面へリダイレクトさせるメソッド
+    public function redirectToProvider(string $provider)
+    {
+        return Socialite::driver($provider)->redirect();
     }
 }
