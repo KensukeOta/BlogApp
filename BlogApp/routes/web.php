@@ -52,6 +52,10 @@ Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
 
 Auth::routes();
 
+Route::prefix('login')->name('login.')->group(function () {
+    Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('{provider}');
+});
+
 Route::get('/logout', 'UserController@logout');
 
 Route::post('/home', 'UserController@store')->middleware('auth');
