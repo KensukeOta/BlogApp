@@ -52,6 +52,16 @@ Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
 
 Auth::routes();
 
+Route::prefix('login')->name('login.')->group(function () {
+    Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('{provider}');
+    Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('{provider}.callback');
+});
+
+Route::prefix('register')->name('register.')->group(function () {
+    Route::get('/{provider}', 'Auth\RegisterController@showProviderUserRegistrationForm')->name('{provider}');
+    Route::post('/{provider}', 'Auth\RegisterController@registerProviderUser')->name('{provider}');
+});
+
 Route::get('/logout', 'UserController@logout');
 
 Route::post('/home', 'UserController@store')->middleware('auth');
