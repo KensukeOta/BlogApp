@@ -10,3 +10,4 @@ php artisan route:list
 php artisan cache:clear
 php artisan config:clear
 exit
+exit
