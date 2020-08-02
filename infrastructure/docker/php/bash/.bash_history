@@ -13,3 +13,9 @@ exit
 exit
 php artisan route:list
 exit
+composer require doctrine/dbal
+php artisan migrate
+php artisan make:migration change_users_table --table=users
+php artisan migarate
+php artisan migrate
+exit
