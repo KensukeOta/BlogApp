@@ -58,6 +58,11 @@ class LoginController extends Controller
             return $this->sendLoginResponse($request);
         }
         
-        // $userがnullの場合の処理は次のパートでここに書く予定
+        // ユーザーが当アプリに未登録である場合
+        return redirect()->route('register.{provider}', [
+            'provider' => $provider,
+            'email' => $providerUser->getEmail(),
+            'token' => $providerUser->token,
+        ]);
     }
 }
