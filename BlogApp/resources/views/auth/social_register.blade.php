@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="login-content">
-                <form method="POST" action="">
+                <form method="POST" action="{{ route('register.{provider}', ['provider' => $provider]) }}">
                     @csrf
                     <img src="img/avatar.svg">
                     <h2 class="title">Welcome</h2>
