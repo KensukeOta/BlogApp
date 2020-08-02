@@ -73,6 +73,7 @@ class RegisterController extends Controller
         ]);
     }
 
+    //  ユーザー名登録画面表示処理のメソッド
     public function showProviderUserRegistrationForm(Request $request, string $provider)
     {
         $token = $request->token;

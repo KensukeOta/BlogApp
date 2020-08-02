@@ -11,3 +11,5 @@ php artisan cache:clear
 php artisan config:clear
 exit
 exit
+php artisan route:list
+exit
