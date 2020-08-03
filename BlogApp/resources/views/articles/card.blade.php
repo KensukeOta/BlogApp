@@ -2,7 +2,7 @@
     <!-- <img src="" class="card-img-top" alt="..."> -->
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h5 class="card-title">{{ $post->title }}</h5>
+            <h5 class="card-title font-weight-bold"><a href="{{ action('PostController@show', $post) }}" class="text-dark">{{ $post->title }}</a></h5>
             <article-like
             :initial-is-liked-by='@json($post->isLikedBy(Auth::user()))'
             :initial-count-likes='@json($post->count_likes)' 
@@ -25,7 +25,6 @@
             </div>
             @endif
         @endforeach
-        <a href="{{ action('PostController@show', $post) }}" class="btn btn-success">記事を見る</a>
         @if (Auth::check())
             @if (Auth::user()->id === $post->user_id)
             <a href="{{ action('PostController@edit', $post) }}" class="btn btn-success">編集</a>
