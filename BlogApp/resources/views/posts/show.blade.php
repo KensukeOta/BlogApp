@@ -44,7 +44,7 @@
     <form action="" method="post">
         @csrf
         <input type="hidden" name="post_id" value="{{ $post->id }}">
-        <input type="hidden" name="user_id" value="{{ $user->id }}">
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
         <textarea name="body" class="form-control my-3" placeholder="コメントを入力">{{ old('body') }}</textarea>
         @error('body')
             <p class="text-danger">{{ $message }}</p>

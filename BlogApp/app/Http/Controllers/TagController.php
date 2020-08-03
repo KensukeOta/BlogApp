@@ -14,8 +14,7 @@ class TagController extends Controller
     {
         $tag = Tag::where('name', $name)->first();
         $posts = Post::orderBy('created_at', 'desc');
-        $user = Auth::user();
 
-        return view('tags.show', ['tag' => $tag, 'posts' => $posts, 'user' => $user]);
+        return view('tags.show', ['tag' => $tag, 'posts' => $posts,]);
     }
 }

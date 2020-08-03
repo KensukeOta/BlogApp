@@ -15,19 +15,17 @@ class PostController extends Controller
     //
     public function index(Request $request)
     {
-        $user = Auth::user();
         $posts = Post::orderBy('created_at', 'desc')->paginate(8);
-        return view('posts.index', ['posts' => $posts, 'user' => $user]);
+        return view('posts.index', ['posts' => $posts,]);
     }
 
     public function new()
     {
         if (Auth::check()) {
-            $user = Auth::user();
             $allTagNames = Tag::all()->map(function ($tag) {
                 return ['text' => $tag->name];
             });
-            return view('posts.new', ['user' => $user, 'allTagNames' => $allTagNames]);
+            return view('posts.new', ['allTagNames' => $allTagNames]);
         } else {
             return redirect('/login');
         }
@@ -49,14 +47,12 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $user = Auth::user();
         $comments = Comment::all();
-        return view('posts.show', ['post' => $post, 'user' => $user, 'comments' => $comments]);
+        return view('posts.show', ['post' => $post,'comments' => $comments]);
     }
 
     public function edit(Post $post)
     {
-        $user = Auth::user();
         $tagNames = $post->tags->map(function ($tag) {
             return ['text' => $tag->name];
         });
@@ -65,8 +61,8 @@ class PostController extends Controller
             return ['text' => $tag->name];
         });
 
-        if ($user->id === $post->user_id) {
-            return view('posts.edit', ['post' => $post, 'user' => $user, 'tagNames' => $tagNames, 'allTagNames' => $allTagNames]);
+        if (Auth::user()->id === $post->user_id) {
+            return view('posts.edit', ['post' => $post,'tagNames' => $tagNames, 'allTagNames' => $allTagNames]);
         } else {
             return redirect('/');
         }
@@ -95,16 +91,14 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        $user = Auth::user();
         $posts = Post::orderBy('created_at', 'desc')->paginate(2);
-        return view('posts.search', ['posts' => $posts, 'user' => $user]);
+        return view('posts.search', ['posts' => $posts,]);
     }
 
     public function result(SearchRequest $request)
     {
-        $user = Auth::user();
         $posts = Post::where('title', 'LIKE' , '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(2);
-        return view('posts.search', ['user' => $user, 'posts' => $posts]);
+        return view('posts.search', ['posts' => $posts]);
     }
 
     public function like(Request $request, Post $post)
