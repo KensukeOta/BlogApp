@@ -25,3 +25,9 @@ services:
       - db-store:/var/lib/mysql
     ports:
       - 3306:3306
+
+  mailhog:
+    build: ./mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
