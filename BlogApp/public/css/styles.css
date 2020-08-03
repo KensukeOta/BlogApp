@@ -1,3 +1,11 @@
+.fa-edit, .fa-trash-alt {
+    color: #333;
+}
+
+.fa-edit:hover, .fa-trash-alt:hover {
+    color: #38C172;
+}
+
 .pagination {
     justify-content: center;
 }
