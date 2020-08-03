@@ -1,4 +1,4 @@
-<div class="card col-md-4">
+<div class="card col-12">
     <!-- <img src="" class="card-img-top" alt="..."> -->
     <div class="card-body">
         <div class="d-flex justify-content-between">
@@ -11,7 +11,7 @@
             >
             </article-like>
         </div>
-        <p class="card-text">by {{ $post->user->name }}</p>
+        <p class="card-text">by <a href="{{ action('UserController@home', $post->user->name) }}" class="text-dark">{{ $post->user->name }}</a></p>
         @foreach($post->tags as $tag)
             @if($loop->first)
             <div class="card-body pt-0 pb-4 pl-0">

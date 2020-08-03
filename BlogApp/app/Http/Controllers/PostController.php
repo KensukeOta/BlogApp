@@ -91,13 +91,13 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(2);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(8);
         return view('posts.search', ['posts' => $posts,]);
     }
 
     public function result(SearchRequest $request)
     {
-        $posts = Post::where('title', 'LIKE' , '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(2);
+        $posts = Post::where('title', 'LIKE' , '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(8);
         return view('posts.search', ['posts' => $posts]);
     }
 
