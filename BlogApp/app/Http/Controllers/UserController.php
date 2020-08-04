@@ -91,6 +91,11 @@ class UserController extends Controller
         return ['name' => $name];
     }
 
+    public function setting(ProfileRequest $request)
+    {
+        return view('users.setting');
+    }
+
     
     public function store(ProfileRequest $request)
     {
