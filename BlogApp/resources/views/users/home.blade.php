@@ -17,7 +17,7 @@
                 <div class="text-center">
                     <p>現在のプロフィール画像</p>
                     @if ($selectUser->path === NULL)
-                    <img src="img/noimage.png" alt="image" style="width: 30%; height: auto;">
+                    <img src="/img/noimage.png" alt="image" style="width: 30%; height: auto;">
                     @else
                     <img src="{{ asset('storage/' . $selectUser->path) }}" alt="image" style="width: 30%; height: auto;">
                     @endif

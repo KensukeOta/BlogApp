@@ -20,9 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @if (Route::has('login'))
-        <link href="/css/login.css" rel="stylesheet">
-    @endif
+    <link href="/css/login.css" rel="stylesheet">
     <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body>
