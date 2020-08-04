@@ -4,6 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if (session('status'))
+              <div class="card-text alert alert-success">
+                {{ session('status') }}
+              </div>
+            @endif
             <div class="login-content">
                 <form method="POST" action="{{ route('password.email') }}">
                     @csrf
