@@ -11,10 +11,10 @@
                     <h2 class="title">Welcome</h2>
                     <div class="input-div one">
                         <div class="i">
-                            <i class="fas fa-user"></i>
+                            <i class="fas fa-envelope"></i>
                         </div>
                         <div class="div">
-                            <h5>Username</h5>
+                            <h5>Email Adress</h5>
                             <input type="email" class="input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                             @error('email')
