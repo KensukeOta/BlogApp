@@ -12,19 +12,6 @@
             </article-like>
         </div>
         <p class="card-text">by <a href="{{ action('UserController@home', $post->user->name) }}" class="text-dark">{{ $post->user->name }}</a></p>
-        @foreach($post->tags as $tag)
-            @if($loop->first)
-            <div class="card-body pt-0 pb-3 pl-0">
-                <div class="card-text line-height">
-            @endif
-                <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted">
-                    {{ $tag->hashtag }}
-                </a>
-            @if($loop->last)
-                </div>
-            </div>
-            @endif
-        @endforeach
         @if (Auth::check())
             @if (Auth::user()->id === $post->user_id)
             <a href="{{ action('PostController@edit', $post) }}" title="編集"><i class="fas fa-edit"></i></a>
