@@ -3,7 +3,7 @@
 @section('title', 'BlogApp')
 
 @section('content')
-<div class="container" style="padding: 32px 64px; background: #fff;">
+<div class="container">
     <div class="row">
         @if (Auth::check())
         <p class="text-center">ようこそ、{{ Auth::user()->name }}さん！</p>
