@@ -9,13 +9,7 @@
             <div class="card-header">{{ __('Dashboard') }}</div>
 
             <div class="card-body">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
                 <div class="text-center">
-                    <p>現在のプロフィール画像</p>
                     @if ($selectUser->path === NULL)
                     <img src="/img/noimage.png" alt="image" style="width: 30%; height: auto;">
                     @else
@@ -52,7 +46,7 @@
                       
                     @if (Auth::check())
                     @if (Auth::user()->id === $selectUser->id)
-                    <a href="" class="btn btn-secondary">プロフィールを編集する</a>
+                    <a href="{{ route('users.setting', Auth::user()) }}" class="btn btn-secondary">プロフィールを編集する</a>
                     @endif
                     @endif
 

@@ -43,6 +43,8 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::get('/{user:name}/followings', 'UserController@followings')->name('followings');
     Route::get('/{user:name}/followers', 'UserController@followers')->name('followers');
     Route::middleware('auth')->group(function () {
+        Route::get('/{user:name}/setting', 'UserController@setting')->name('setting');
+        Route::post('/{user:name}/setting', 'UserController@store');
         Route::put('/{user:name}/follow', 'UserController@follow')->name('follow');
         Route::delete('/{user:name}/follow', 'UserController@unfollow')->name('unfollow');
     });
@@ -64,6 +66,5 @@ Route::prefix('register')->name('register.')->group(function () {
 
 Route::get('/logout', 'UserController@logout');
 
-Route::post('/home', 'UserController@store')->middleware('auth');
 
 // Route::get('/home', 'HomeController@index')->name('home');
