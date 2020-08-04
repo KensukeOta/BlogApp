@@ -9,9 +9,9 @@
             <div class="card-header">{{ __('Dashboard') }}</div>
 
             <div class="card-body">
-                @if (session('status'))
+                @if (session('success'))
                     <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
+                        {{ session('success') }}
                     </div>
                 @endif
                 <div class="text-center">
@@ -22,9 +22,16 @@
                     <img src="{{ asset('storage/' . Auth::user()->path) }}" alt="image" style="width: 30%; height: auto;">
                     @endif
                     <p class="my-3">{{ Auth::user()->name }}</p>
-                    <div class="status d-flex justify-content-evenly">
 
-                    </div>  
+                    <form action="{{ route('users.setting', Auth::user()) }}" method="post" enctype="multipart/form-data">
+                        <p>プロフィール画像の変更</p>
+                        @csrf 
+                        <input type="file" name="path">
+                        <input type="submit" value="変更する">
+                    </form>
+                    @error('path')
+                    <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>         
             </div>
         </div>

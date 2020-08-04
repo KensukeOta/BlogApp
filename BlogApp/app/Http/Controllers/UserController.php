@@ -105,7 +105,7 @@ class UserController extends Controller
             $filePath = $originalImg->store('public');
             Auth::user()->path = str_replace('public/', '', $filePath);
             Auth::user()->save();
-            return redirect('/home')->with('success', '新しいプロフィールを登録しました');
+            return redirect()->route('users.setting', Auth::user())->with('success', '新しいプロフィール画像を登録しました');
         }
     }
 
