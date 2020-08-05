@@ -8,3 +8,5 @@ php artisan route:list
 exit
 php artisan config:cache
 exit
+php artisan --version
+exit

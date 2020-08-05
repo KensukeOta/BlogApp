@@ -1,9 +1,25 @@
+nav a {
+    font-family: 'Poppins', sans-serif;
+}
+
 .fa-edit, .fa-trash-alt {
     color: #333;
 }
 
 .fa-edit:hover, .fa-trash-alt:hover {
     color: #38C172;
+}
+
+.profile {
+    margin-top: 69px;
+    text-align: center;
+}
+
+.user_image {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin: 0 auto;
 }
 
 .pagination {
