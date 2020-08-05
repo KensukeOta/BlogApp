@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="container" style="padding: 32px; background: #fff; height: 100vh;">
+    <p class="text-muted">{{ $post->created_at }}</p>
     <h1>{{ $post->title }}</h1>
     <p>by <img src="{{ asset('storage/' . $post->user->path) }}" style="width: 32px; height: 32px; border-radius: 50%;" class="mr-2"><a href="{{ action('UserController@home', $post->user->name) }}" class="text-dark">{{ $post->user->name }}</a></p>
     @foreach($post->tags as $tag)
