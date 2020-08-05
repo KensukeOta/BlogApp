@@ -1,4 +1,4 @@
-<div class="card col-12 p-0">
+<div class="card p-0">
     <!-- <img src="" class="card-img-top" alt="..."> -->
     <div class="card-body p-3">
         <div class="d-flex justify-content-between">
