@@ -3,7 +3,7 @@
 @section('title', '検索 - BlogApp')
 
 @section('content')
-<div class="container" style="padding: 32px; background: #fff; height: 100vh;">
+<div class="container">
     <div class="row">
         <form action="" method="post">
             @csrf
