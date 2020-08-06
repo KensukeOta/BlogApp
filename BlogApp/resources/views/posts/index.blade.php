@@ -6,17 +6,23 @@
 <div class="container">
     <div class="d-flex">
         <div class="row">
-            <div class="col-12 col-lg-8 px-1">
+            <div class="d-none col-md-3 d-md-block col-lg-3 d-lg-block">
+                <p>あああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
+            </div>
+            
+            <div class="col-12 col-md-9 col-lg-6 px-1">
                 <a href="/posts/new" class="btn btn-outline-success col-lg-12 my-3">投稿する</a>
+                <div class="articles">
                 @forelse ($posts as $post)
                     @include('articles.card')
                 @empty
                 <p>現在、記事が投稿されていません。</p>
                 @endforelse
+                </div>
                 <p>{{ $posts->links() }}</p>
             </div>
             
-            <div class="d-none col-lg-4 d-lg-block"> 
+            <div class="d-none d-md-none col-lg-3 d-lg-block"> 
                 @auth
                 <div class="card p-3 profile border-0">
                     <p class="m-0"><img src="{{ asset('storage/' . Auth::user()->path) }}" alt="image" class="user_image"></p>

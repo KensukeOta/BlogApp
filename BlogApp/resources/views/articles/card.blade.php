@@ -15,10 +15,10 @@
             <p class="card-text text-muted m-0">by <a href="{{ action('UserController@home', $post->user->name) }}" class="text-muted">{{ $post->user->name }}</a></p>
             @if (Auth::check())
                 @if (Auth::user()->id === $post->user_id)
-                <a href="{{ action('PostController@edit', $post) }}" title="編集"><i class="fas fa-edit"></i></a>
+                <a href="{{ action('PostController@edit', $post) }}" title="編集"><i class="fas fa-edit text-muted"></i></a>
                 @endif
                 @if (Auth::user()->id === $post->user_id)
-                <a href="#" class="del" data-id="{{ $post->id }}" title="削除"><i class="far fa-trash-alt"></i></a>
+                <a href="#" class="del" data-id="{{ $post->id }}" title="削除"><i class="far fa-trash-alt text-muted"></i></a>
                 @endif
                 <form method="post" action="{{ url('/posts', $post->id) }}" id="form_{{ $post->id }}">
                     @csrf

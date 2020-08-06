@@ -2,6 +2,16 @@ nav a {
     font-family: 'Poppins', sans-serif;
 }
 
+.articles .article {
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+}
+
+.articles .article:first-child {
+    border-top: none;
+}
+
 .fa-edit, .fa-trash-alt {
     color: #333;
 }
