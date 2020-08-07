@@ -2,6 +2,21 @@ nav a {
     font-family: 'Poppins', sans-serif;
 }
 
+.categories {
+    color: black;
+    font-size: 19px;  
+    font-weight: bold;
+    padding: 8px;
+    margin: 16px 0;
+    text-align: left;
+    border-radius: 16px;
+}
+
+.categories:hover {
+    color: #38C172;
+    background: rgba(56,193,114, 0.2)
+}
+
 .articles .article {
     border-right: none;
     border-left: none;
@@ -17,7 +32,7 @@ nav a {
 }
 
 .fa-edit:hover, .fa-trash-alt:hover {
-    color: #38C172;
+    color: #38C172!important;
 }
 
 .profile {

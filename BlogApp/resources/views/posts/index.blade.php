@@ -7,7 +7,10 @@
     <div class="d-flex">
         <div class="row">
             <div class="d-none col-md-3 d-md-block col-lg-3 d-lg-block">
-                <p>あああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
+                <a href="/search" class="text-decoration-none"><p class="categories"><i class="fas fa-search mr-2"></i>記事を検索</p></a>
+                <a href="" class="text-decoration-none"><p class="categories"><i class="fas fa-stream mr-2"></i>タイムライン</p></a>
+                <a href="" class="text-decoration-none"><p class="categories"><i class="fas fa-heart mr-2"></i>お気に入り記事</p></a>
+                <a href="" class="text-decoration-none"><p class="categories"><i class="fas fa-user mr-2"></i>プロフィール</p></a>
             </div>
             
             <div class="col-12 col-md-9 col-lg-6 px-1">
@@ -27,15 +30,10 @@
                 <div class="card p-3 profile border-0">
                     <p class="m-0"><img src="{{ asset('storage/' . Auth::user()->path) }}" alt="image" class="user_image"></p>
                     <p class="m-0 pb-3 border-bottom"><a href="{{ action('UserController@home', Auth::user()->name) }}" class="text-muted">{{ Auth::user()->name }}</a></p>
-                    <div class="d-flex justify-content-evenly">
+                    <div class="d-flex justify-content-between">
                         <div class="post">
                             <p><a href="{{ action('UserController@index', Auth::user()) }}" class="text-decoration-none font-weight-bold text-dark">{{ Auth::user()->posts->count() }}</a></p>
                             <p><a href="{{ action('UserController@index', Auth::user()) }}" class="text-decoration-none text-dark">投稿</a></p>
-                        </div>
-
-                        <div class="like">
-                            <p><a href="{{ route('users.likes', Auth::user()) }}" class="text-decoration-none font-weight-bold text-dark">{{ Auth::user()->likes->count() }}</a></p>
-                            <p><a href="{{ route('users.likes', Auth::user()) }}" class="text-decoration-none text-dark">お気に入り記事</a></p>
                         </div>
 
                         <div class="follow">

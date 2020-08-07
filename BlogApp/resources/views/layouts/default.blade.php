@@ -15,7 +15,6 @@
         <header class="navbar bg-success">
             <nav class="container">
                 <a href="/" class="text-light text-decoration-none">BlogApp</a>
-                <a href="/search" class="text-light">記事検索</a>
                 @if (Auth::check())
                 <div class="dropdown">
                     <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
