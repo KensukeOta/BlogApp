@@ -18,7 +18,8 @@ class PostController extends Controller
     {
         $posts = Post::orderBy('created_at', 'desc')->paginate(8);
         $users = User::withCount('followers')->orderBy('followers_count', 'desc')->take(10)->get();
-        return view('posts.index', ['posts' => $posts, 'users' => $users]);
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
+        return view('posts.index', ['posts' => $posts, 'users' => $users, 'tags' => $tags]);
     }
 
     public function new()

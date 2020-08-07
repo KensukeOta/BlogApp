@@ -61,7 +61,7 @@
                         @if ($user->path === NULL)
                         {{ $loop->iteration . ' ' }} <img src="/img/noimage.png"><a href="{{ route('users.home', $user->name) }}" class="text-dark">{{ $user->name }}</a> <span class="follower-ranking_count">{{ $user->followers_count }}</span>
                         @else
-                        {{ $loop->iteration . ' ' }} <img src="{{ asset('storage/' . $user->path) }}"><a href="{{ route('users.home', $user->name) }}" class="text-dark">{{ $user->name }}</a> <span class="follower-ranking_count">{{ $user->followers_count }}</span>
+                        {{ $loop->iteration . ' ' }} <img src="{{ asset('storage/' . $user->path) }}"><a href="{{ route('users.home', $user->name) }}" class="text-dark">{{ $user->name }}</a><span class="follower-ranking_count">{{ $user->followers_count }}</span>
                         @endif
                     </p>
                     @endif
@@ -69,6 +69,13 @@
                 </div>
                 <div class="card ranking mt-2">
                     <p>タグランキング</p>
+                    @foreach ($tags as $tag)
+                    @if ($tag->posts_count >= 1)
+                    <p class="tags">
+                        {{ $loop->iteration . ' ' }}<a href="{{ route('tags.show', $tag->name) }}" class="text-dark">{{ $tag->name }}</a><span class="tags-ranking_count">{{ $tag->posts_count }}</span>
+                    </p>
+                    @endif
+                    @endforeach
                 </div>
             </div>
         </div>
