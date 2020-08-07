@@ -28,7 +28,13 @@
             <div class="d-none d-md-none col-lg-3 d-lg-block"> 
                 @auth
                 <div class="card p-3 profile border-0">
-                    <p class="m-0"><img src="{{ asset('storage/' . Auth::user()->path) }}" alt="image" class="user_image"></p>
+                    <p class="m-0">
+                        @if (Auth::user()->path === NULL)
+                        <img src="/img/noimage.png" alt="image" class="user_image">
+                        @else
+                        <img src="{{ asset('storage/' . Auth::user()->path) }}" alt="image" class="user_image">
+                        @endif
+                    </p>
                     <p class="m-0 pb-3 border-bottom"><a href="{{ action('UserController@home', Auth::user()->name) }}" class="text-muted">{{ Auth::user()->name }}</a></p>
                     <div class="d-flex justify-content-between">
                         <div class="post">
@@ -47,6 +53,17 @@
                     </div>
                 </div>
                 @endauth
+                <div class="card ranking mt-2">
+                    <p>フォロワーランキング</p>
+                    @foreach ($users as $user)
+                    @if ($user->followers_count >= 1)
+                    <p>{{ $loop->iteration . ' ' . $user->name . ' ' . $user->followers_count }}</p>
+                    @endif
+                    @endforeach
+                </div>
+                <div class="card ranking mt-2">
+                    <p>タグランキング</p>
+                </div>
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
 use App\Comment;
 use App\Tag;
 use App\Http\Requests\PostRequest;
@@ -13,10 +14,11 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     //
-    public function index(Request $request)
+    public function index(Request $request, User $user)
     {
         $posts = Post::orderBy('created_at', 'desc')->paginate(8);
-        return view('posts.index', ['posts' => $posts,]);
+        $users = User::withCount('followers')->orderBy('followers_count', 'desc')->get();
+        return view('posts.index', ['posts' => $posts, 'users' => $users]);
     }
 
     public function new()

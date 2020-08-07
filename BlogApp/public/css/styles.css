@@ -47,6 +47,10 @@ nav a {
     margin: 0 auto;
 }
 
+.ranking {
+    border: none;
+}
+
 .pagination {
     justify-content: center;
 }
