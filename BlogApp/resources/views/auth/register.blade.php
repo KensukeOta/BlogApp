@@ -76,6 +76,9 @@
             <a href="{{ route('login.{provider}', ['provider' => 'google']) }}" class="btn btn-block btn-danger mx-auto google">
                 <i class="fab fa-google mr-1"></i>Googleで登録
             </a>
+            <a href="{{ route('login.{provider}', ['provider' => 'github']) }}" class="btn btn-block btn-dark mx-auto github">
+                <i class="fab fa-github mr-1"></i>GitHubで登録
+            </a>
         </div>
     </div>
 </div>
