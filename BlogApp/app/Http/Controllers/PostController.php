@@ -17,7 +17,7 @@ class PostController extends Controller
     public function index(Request $request, User $user)
     {
         $posts = Post::orderBy('created_at', 'desc')->paginate(8);
-        $users = User::withCount('followers')->orderBy('followers_count', 'desc')->get();
+        $users = User::withCount('followers')->orderBy('followers_count', 'desc')->take(10)->get();
         return view('posts.index', ['posts' => $posts, 'users' => $users]);
     }
 

@@ -38,7 +38,7 @@ Route::prefix('posts')->name('posts.')->group(function () {
 
 Route::prefix('users')->name('users.')->group(function () {
     Route::get('/{user:name}', 'UserController@home')->name('home');
-    Route::get('/{user:name}/posts', 'UserController@index');
+    Route::get('/{user:name}/posts', 'UserController@index')->name('index');
     Route::get('/{user:name}/likes', 'UserController@likes')->name('likes');
     Route::get('/{user:name}/followings', 'UserController@followings')->name('followings');
     Route::get('/{user:name}/followers', 'UserController@followers')->name('followers');

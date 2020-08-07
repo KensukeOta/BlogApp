@@ -49,6 +49,29 @@ nav a {
 
 .ranking {
     border: none;
+    padding: 16px;
+
+}
+
+.ranking .users {
+    position: relative;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 8px;
+}
+
+.ranking img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.follower-ranking_count {
+    position: absolute;
+    right: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: right;
 }
 
 .pagination {
