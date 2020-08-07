@@ -6,7 +6,6 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-    overflow: hidden;
 }
 
 
@@ -166,7 +165,7 @@ a:hover{
 	background-position: right;
 }
 
-.google {
+.google, .github {
 	width: 360px;
 }
 
