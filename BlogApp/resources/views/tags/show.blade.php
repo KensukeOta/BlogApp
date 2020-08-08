@@ -16,7 +16,7 @@
 
     <div class="container">
         <div class="row">
-            @foreach ($tag->posts as $post)
+            @foreach ($posts as $post)
                 @include('articles.card')
             @endforeach
         </div>
