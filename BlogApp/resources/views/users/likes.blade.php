@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <p class="text-center">{{ $selectUser->name }}さんのお気に入り記事</p>
-        @forelse ($selectUser->likes as $post)
+        @forelse ($posts as $post)
             @include('articles.card')
         @empty
         <p>お気に入りの記事がありません</p>
