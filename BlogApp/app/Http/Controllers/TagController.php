@@ -13,7 +13,6 @@ class TagController extends Controller
     public function show(string $name)
     {
         $tag = Tag::where('name', $name)->first();
-        // $posts = Post::orderBy('created_at', 'desc');
         $posts = $tag->posts->sortByDesc('created_at');
 
         return view('tags.show', ['tag' => $tag, 'posts' => $posts,]);

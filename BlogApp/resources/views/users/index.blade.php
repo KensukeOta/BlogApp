@@ -12,6 +12,7 @@
         <p>現在、記事が投稿されていません。</p>
         @endforelse
     </div>
+    <p>{{ $posts->links() }}</p>
 </div>
 <script src="/js/main.js"></script>
 @endsection

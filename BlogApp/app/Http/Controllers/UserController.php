@@ -20,7 +20,7 @@ class UserController extends Controller
     public function index(User $user)
     {
         $selectUser = $user;
-        $posts = Post::latest()->where('user_id', $selectUser->id)->get();
+        $posts = Post::latest()->where('user_id', $selectUser->id)->paginate(8);
         return view('users.index', ['selectUser' => $selectUser, 'posts' => $posts]);
     }
 
