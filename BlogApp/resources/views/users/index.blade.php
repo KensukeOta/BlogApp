@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <p class="text-center">{{ $selectUser->name }}さんの投稿</p>
-        @forelse ($selectUser->posts as $post)
+        @forelse ($posts as $post)
             @include('articles.card')
         @empty
         <p>現在、記事が投稿されていません。</p>

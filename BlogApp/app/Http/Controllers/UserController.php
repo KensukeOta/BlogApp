@@ -20,7 +20,7 @@ class UserController extends Controller
     public function index(User $user)
     {
         $selectUser = $user;
-        $posts = $selectUser->posts->sortByDesc('created_at');
+        $posts = Post::latest()->where('user_id', $selectUser->id)->get();
         return view('users.index', ['selectUser' => $selectUser, 'posts' => $posts]);
     }
 
