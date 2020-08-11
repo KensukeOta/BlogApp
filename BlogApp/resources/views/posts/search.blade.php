@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <form action="" method="post">
+        <form action="" method="post" style="padding: 0;">
             @csrf
             <input type="search" name="search" class="form-control my-3" placeholder="検索" value="{{ old('search') }}">
             @error('search')
