@@ -3,7 +3,7 @@
 @section('title', '新規作成 - BlogApp')
 
 @section('content')
-<div class="container" style="padding: 32px; background: #fff; height: 100vh;">
+<div class="container" style="padding: 32px; background: #fff; overflow: hidden;">
     <form action="" method="post">
         @csrf
         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">

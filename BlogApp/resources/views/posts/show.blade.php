@@ -20,7 +20,7 @@
         </div>
         @endif
     @endforeach
-    <p class="mt-5">{{ nl2br(e($post->body)) }}</p>
+    <p class="mt-5">{!! nl2br(e($post->body)) !!}</p>
 
     <article-like
     :initial-is-liked-by='@json($post->isLikedBy(Auth::user()))'
@@ -35,7 +35,7 @@
         @forelse ($post->comments as $comment)
         <div class="border-bottom py-3">
             <p class="font-weight-bold"><img src="{{ asset('storage/' . $comment->user->path) }}" style="width: 32px; height: 32px; border-radius: 50%;" class="mr-2">{{ $comment->user->name }}</p>
-            <p style="font-size: 14px;" class="mb-0">{{ $comment->body }}</p>
+            <p style="font-size: 14px;" class="mb-0">{!! nl2br(e($comment->body)) !!}</p>
         </div>
         @empty
         <p>コメントがありません</p>
