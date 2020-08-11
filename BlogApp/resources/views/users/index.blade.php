@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <p class="text-center">{{ $selectUser->name }}さんの投稿</p>
+        <p class="text-center mt-3">{{ $selectUser->name }}さんの投稿</p>
         @forelse ($posts as $post)
             @include('articles.card')
         @empty

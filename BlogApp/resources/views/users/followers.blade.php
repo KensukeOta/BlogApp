@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <p class="text-center">{{ $selectUser->name }}さんのフォロワー</p>
+    <p class="text-center mt-3">{{ $selectUser->name }}さんのフォロワー</p>
     @forelse ($followers as $person)
     <div class="card col">
         <!-- <img src="" class="card-img-top" alt="..."> -->
