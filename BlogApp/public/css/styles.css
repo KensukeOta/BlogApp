@@ -40,6 +40,10 @@ nav a {
     text-align: center;
 }
 
+.guest {
+    margin-top: 69px;
+}
+
 .user_image {
     width: 48px;
     height: 48px;

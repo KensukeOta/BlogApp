@@ -55,6 +55,9 @@
                     </div>
                 </div>
                 @endauth
+                @guest
+                <div class="guest"></div>
+                @endguest
                 <div class="card ranking mt-2">
                     <p>フォロワーランキング</p>
                     @foreach ($users as $user)
