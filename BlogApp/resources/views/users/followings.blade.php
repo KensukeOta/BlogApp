@@ -7,10 +7,17 @@
     <p class="text-center mt-3">{{ $selectUser->name }}さんのフォロー中のユーザー</p>
     @forelse ($followings as $person)
     <div class="card col">
-        <!-- <img src="" class="card-img-top" alt="..."> -->
         <div class="card-body">
             <div class="d-flex justify-content-between">
-                <h5 class="card-title">{{ $person->name }}</h5>
+                <h5 class="card-title m-0">
+                    <span>
+                        @if ($person->path === NULL)
+                        <img src="/img/noimage.png" alt="image" class="user_image">
+                        @else
+                        <img src="{{ asset('storage/' . $person->path) }}" alt="image" class="user_image">
+                        @endif
+                    </span>{{ $person->name }}
+                </h5>
                 @if (Auth::check())
                 @unless (Auth::user()->name === $person->name)
                 <follow-button
