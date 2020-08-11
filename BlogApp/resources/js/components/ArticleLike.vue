@@ -1,16 +1,44 @@
 <template>
   <div>
-      <i class="fas fa-heart mr-1"
-      :class="{'text-danger':this.isLikedBy}"
-      @click="clickLike">
-      </i>
+      <label class="like">
+        <input type="checkbox">
+        <i class="fas fa-heart heart mr-1"
+        :class="{'text-danger':this.isLikedBy}"
+        @click="clickLike">
+        </i>
+      </label>
     {{ countLikes }}
   </div>
 </template>
 
 <style>
-    .fa-heart {
+    .like [type="checkbox"] {
+      display: none;
+    }
+
+    .heart {
+        color: #e4e4e4;
         cursor: pointer;
+        user-select: none;
+    }
+
+    .like [type="checkbox"]:checked ~ .heart {
+      animation-name: heart;
+      animation-duration: .6s;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes heart {
+      0% {
+        transform: scale(0);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+        color: red;
+      }
     }
 </style>
 

@@ -1956,6 +1956,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     initialIsLikedBy: {
@@ -6672,7 +6700,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.fa-heart {\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.like [type=\"checkbox\"] {\n  display: none;\n}\n.heart {\n    color: #e4e4e4;\n    cursor: pointer;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n}\n.like [type=\"checkbox\"]:checked ~ .heart {\n  -webkit-animation-name: heart;\n          animation-name: heart;\n  -webkit-animation-duration: .6s;\n          animation-duration: .6s;\n  -webkit-animation-fill-mode: forwards;\n          animation-fill-mode: forwards;\n}\n@-webkit-keyframes heart {\n0% {\n    transform: scale(0);\n}\n50% {\n    transform: scale(1.1);\n}\n100% {\n    transform: scale(1);\n    color: red;\n}\n}\n@keyframes heart {\n0% {\n    transform: scale(0);\n}\n50% {\n    transform: scale(1.1);\n}\n100% {\n    transform: scale(1);\n    color: red;\n}\n}\n", ""]);
 
 // exports
 
@@ -39306,11 +39334,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("i", {
-      staticClass: "fas fa-heart mr-1",
-      class: { "text-danger": this.isLikedBy },
-      on: { click: _vm.clickLike }
-    }),
+    _c("label", { staticClass: "like" }, [
+      _c("input", { attrs: { type: "checkbox" } }),
+      _vm._v(" "),
+      _c("i", {
+        staticClass: "fas fa-heart heart mr-1",
+        class: { "text-danger": this.isLikedBy },
+        on: { click: _vm.clickLike }
+      })
+    ]),
     _vm._v("\n  " + _vm._s(_vm.countLikes) + "\n")
   ])
 }
