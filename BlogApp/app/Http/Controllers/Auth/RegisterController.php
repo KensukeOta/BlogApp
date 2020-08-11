@@ -78,7 +78,11 @@ class RegisterController extends Controller
     {
         $token = $request->token;
 
-        $providerUser = Socialite::driver($provider)->userFromToken($token);
+        if ($provider === 'twitter') {
+            $providerUser = Socialite::driver($provider)->userFromTokenAndSecret(env('TWITTER_ACCESS_TOKEN'), env('TWITTER_ACCESS_TOKEN_SECRET'));
+        } else {
+            $providerUser = Socialite::driver($provider)->userFromToken($token);
+        }
 
         return view('auth.social_register', [
             'provider' => $provider,
