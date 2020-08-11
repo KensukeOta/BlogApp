@@ -44,6 +44,12 @@ nav a {
     margin-top: 69px;
 }
 
+.post-user_image {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
 .user_image {
     width: 48px;
     height: 48px;

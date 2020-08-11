@@ -12,7 +12,7 @@
             </article-like>
         </div>
         <div class="d-flex justify-content-between">
-            <p class="card-text text-muted m-0">by <a href="{{ action('UserController@home', $post->user->name) }}" class="text-muted">{{ $post->user->name }}</a></p>
+            <p class="card-text text-muted m-0">by <img src="{{ asset('storage/' . $post->user->path) }}" alt="image" class="post-user_image mr-1"><a href="{{ action('UserController@home', $post->user->name) }}" class="text-muted">{{ $post->user->name }}</a></p>
             @if (Auth::check())
                 @if (Auth::user()->id === $post->user_id)
                 <a href="{{ action('PostController@edit', $post) }}" title="編集"><i class="fas fa-edit text-muted"></i></a>
