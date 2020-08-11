@@ -5,7 +5,7 @@
 @section('content')
     <div class="container" style="padding: 32px; background: #fff; height: 100vh;">
     <p class="text-muted">{{ $post->created_at }}</p>
-    <h1>{{ $post->title }}</h1>
+    <h1 class="article-title">{{ $post->title }}</h1>
     <p>by <img src="{{ asset('storage/' . $post->user->path) }}" style="width: 32px; height: 32px; border-radius: 50%;" class="mr-2"><a href="{{ action('UserController@home', $post->user->name) }}" class="text-muted">{{ $post->user->name }}</a></p>
     @foreach($post->tags as $tag)
         @if($loop->first)
@@ -20,7 +20,7 @@
         </div>
         @endif
     @endforeach
-    <p class="mt-5">{!! nl2br(e($post->body)) !!}</p>
+    <p class="article-body mt-5">{!! nl2br(e($post->body)) !!}</p>
 
     <article-like
     :initial-is-liked-by='@json($post->isLikedBy(Auth::user()))'

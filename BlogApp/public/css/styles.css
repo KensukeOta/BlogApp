@@ -27,6 +27,16 @@ nav a {
     border-top: none;
 }
 
+.article-title {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.article-body {
+    font-size: 16px;
+    line-height: 1.9;
+}
+
 .fa-edit, .fa-trash-alt {
     color: #333;
 }
