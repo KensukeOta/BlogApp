@@ -18,7 +18,7 @@
                         <img src="{{ asset('storage/' . $person->path) }}" alt="image" class="user_image">
                         @endif
                     </span>
-                    {{ $person->name }}
+                    <a href="{{ route('users.home', $person->name) }}" class="text-muted">{{ $person->name }}</a>
                 </h5>
                 @if (Auth::check())
                 @unless (Auth::user()->name === $person->name)

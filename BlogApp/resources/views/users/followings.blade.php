@@ -16,9 +16,9 @@
                         @else
                         <img src="{{ asset('storage/' . $person->path) }}" alt="image" class="user_image">
                         @endif
-                    </span>{{ $person->name }}
+                    </span><a href="{{ route('users.home', $person->name) }}" class="text-muted">{{ $person->name }}</a>
                 </h5>
-                @if (Auth::check())
+                @auth
                 @unless (Auth::user()->name === $person->name)
                 <follow-button
                 :initial-is-followed-by='@json($person->isFollowedBy(Auth::user()))'
@@ -26,7 +26,7 @@
                 endpoint="{{ route('users.follow', $person->name) }}"
                 ></follow-button>
                 @endunless
-                @endif
+                @endauth
             </div>
         </div>
     </div>
