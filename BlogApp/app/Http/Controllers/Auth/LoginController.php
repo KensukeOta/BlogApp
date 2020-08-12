@@ -49,7 +49,11 @@ class LoginController extends Controller
 
     public function handleProviderCallback(Request $request, string $provider)
     {
-        $providerUser = Socialite::driver($provider)->stateless()->user();
+        if ($provider === 'twitter') {
+            $providerUser = Socialite::driver($provider)->userFromTokenAndSecret(env('TWITTER_ACCESS_TOKEN'), env('TWITTER_ACCESS_TOKEN_SECRET'));
+        } else {
+            $providerUser = Socialite::driver($provider)->stateless()->user();
+        }
 
         $user = User::where('email', $providerUser->getEmail())->first();
 
