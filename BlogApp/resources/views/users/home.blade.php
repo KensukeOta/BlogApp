@@ -36,18 +36,31 @@
                         </div>
                     </div>
 
+                    @auth
+                    @if (Auth::user()->id !== $selectUser->id)
                     <follow-button class="ml-auto mb-3"
                     :initial-is-followed-by='@json($selectUser->isFollowedBy(Auth::user()))'
                     :authorized='@json(Auth::check())'
                     endpoint="{{ route('users.follow', $selectUser->name) }}"
                     >
                     </follow-button>  
+                    @endif
+                    @endauth
+
+                    @guest 
+                    <follow-button class="ml-auto mb-3"
+                    :initial-is-followed-by='@json($selectUser->isFollowedBy(Auth::user()))'
+                    :authorized='@json(Auth::check())'
+                    endpoint="{{ route('users.follow', $selectUser->name) }}"
+                    >
+                    </follow-button> 
+                    @endguest
                         
-                    @if (Auth::check())
+                    @auth
                     @if (Auth::user()->id === $selectUser->id)
                     <a href="{{ route('users.setting', Auth::user()) }}" class="btn btn-secondary">プロフィールを編集する</a>
                     @endif
-                    @endif
+                    @endauth
                 </div> 
             </div>   
         </div>     
