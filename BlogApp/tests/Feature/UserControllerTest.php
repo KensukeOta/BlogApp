@@ -19,10 +19,18 @@ class UserControllerTest extends TestCase
     
     public function testExample()
     {
+        //  ユーザーのダミーデータを作成
         $user = factory(User::class)->create();
 
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $response = $this->get(route('users.home', ['user' => $user->name]));
+        $response->assertStatus(200)->assertViewIs('users.home');
+        $response = $this->get(route('users.index', ['user' => $user->name]));
+        $response->assertStatus(200)->assertViewIs('users.index');
+        $response = $this->get(route('users.likes', ['user' => $user->name]));
+        $response->assertStatus(200)->assertViewIs('users.likes');
+        $response = $this->get(route('users.followings', ['user' => $user->name]));
+        $response->assertStatus(200)->assertViewIs('users.followings');
+        $response = $this->get(route('users.followers', ['user' => $user->name]));
+        $response->assertStatus(200)->assertViewIs('users.followers');
     }
 }
