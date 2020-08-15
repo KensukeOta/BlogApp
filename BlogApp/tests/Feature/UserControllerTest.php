@@ -34,7 +34,7 @@ class UserControllerTest extends TestCase
         $response->assertStatus(200)->assertViewIs('users.followers');
 
         //  ユーザーがログアウトしたらトップページへリダイレクトするかどうかをテスト
-        $response = $this->actingAs($user)->get(route('users.logout'));
+        $response = $this->actingAs($user)->get(route('logout'));
         $response->assertLocation('/');
         //  ログインユーザーがプロフィール編集画面へ遷移するかどうかをテスト
         $response = $this->actingAs($user)->get(route('users.setting', ['user' => $user->name]));
