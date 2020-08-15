@@ -43,7 +43,7 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::get('/{user:name}/followings', 'UserController@followings')->name('followings');
     Route::get('/{user:name}/followers', 'UserController@followers')->name('followers');
     Route::middleware('auth')->group(function () {
-        Route::get('/logout', 'UserController@logout');
+        Route::get('/logout', 'UserController@logout')->name('logout');
         Route::get('/{user:name}/setting', 'UserController@setting')->name('setting');
         Route::post('/{user:name}/setting', 'UserController@store');
         Route::put('/{user:name}/follow', 'UserController@follow')->name('follow');
