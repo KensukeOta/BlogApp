@@ -1,2 +1,3 @@
-php artisan make:test UserControllerTest
+php artisan test
+php artisan test
 exit
