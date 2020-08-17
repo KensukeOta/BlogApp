@@ -11,6 +11,6 @@ $factory->define(Post::class, function (Faker $faker) {
         //
         'title' => Str::random(10),
         'body' => Str::random(10),
-        'user_id' => 1,
+        'user_id' => 4,
     ];
 });
