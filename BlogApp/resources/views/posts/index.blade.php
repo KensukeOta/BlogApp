@@ -7,7 +7,7 @@
     <div class="d-flex">
         <div class="row">
             <div class="d-none col-md-3 d-md-block col-lg-3 d-lg-block">
-                <a href="/search" class="text-decoration-none"><p class="categories"><i class="fas fa-search mr-2"></i>記事を検索</p></a>
+                <a href="{{ route('posts.search') }}" class="text-decoration-none"><p class="categories"><i class="fas fa-search mr-2"></i>記事を検索</p></a>
                 @auth
                 <!-- <a href="" class="text-decoration-none"><p class="categories"><i class="fas fa-stream mr-2"></i>タイムライン</p></a> -->
                 <a href="{{ route('users.likes', Auth::user()->name) }}" class="text-decoration-none"><p class="categories"><i class="fas fa-heart mr-2"></i>お気に入り記事</p></a>

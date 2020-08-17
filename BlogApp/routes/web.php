@@ -13,26 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PostController@index');
-
-Route::get('/posts/new', 'PostController@new');
-Route::post('/posts/new', 'PostController@create');
-
-Route::get('/posts/{post}', 'PostController@show')->where('post', '[0-9]+');
-
-Route::get('/posts/{post}/edit', 'PostController@edit')->middleware('auth');
-Route::patch('/posts/{post}', 'PostController@update');
-
-Route::delete('/posts/{post}', 'PostController@destroy');
-
-Route::post('/posts/{post}', 'CommentController@create');
-
-Route::get('/search', 'PostController@search');
-Route::post('/search', 'PostController@result');
-
-Route::prefix('posts')->name('posts.')->group(function () {
-    Route::put('/{post}/like', 'PostController@like')->name('like')->middleware('auth');
-    Route::delete('/{post}/like', 'PostController@unlike')->name('unlike')->middleware('auth');
+Route::name('posts.')->group(function () {
+    Route::get('/', 'PostController@index')->name('index');
+    Route::prefix('posts')->group(function () {
+        Route::get('/new', 'PostController@new')->middleware('auth')->name('new');
+        Route::post('/new', 'PostController@create')->name('create');
+        Route::get('/{post}', 'PostController@show')->where('post', '[0-9]+')->name('show');
+        Route::get('/{post}/edit', 'PostController@edit')->middleware('auth')->name('edit');
+        Route::patch('/{post}', 'PostController@update')->middleware('auth')->name('update');
+        Route::delete('/{post}', 'PostController@destroy')->name('destroy');
+        Route::post('/{post}', 'CommentController@create')->name('comment');
+        Route::get('/search', 'PostController@search')->name('search');
+        Route::post('/search', 'PostController@result')->name('result');
+        Route::put('/{post}/like', 'PostController@like')->name('like')->middleware('auth');
+        Route::delete('/{post}/like', 'PostController@unlike')->name('unlike')->middleware('auth');
+    });
 });
 
 
@@ -50,6 +45,8 @@ Route::prefix('users')->name('users.')->group(function () {
     });
 });
 
+Route::get('/logout', 'UserController@logout')->name('logout');
+
 Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
 
 Auth::routes();
@@ -63,8 +60,3 @@ Route::prefix('register')->name('register.')->group(function () {
     Route::get('/{provider}', 'Auth\RegisterController@showProviderUserRegistrationForm')->name('{provider}');
     Route::post('/{provider}', 'Auth\RegisterController@registerProviderUser')->name('{provider}');
 });
-
-Route::get('/logout', 'UserController@logout');
-
-
-// Route::get('/home', 'HomeController@index')->name('home');
