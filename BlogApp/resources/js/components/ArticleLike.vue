@@ -1,45 +1,24 @@
 <template>
   <div>
-      <label class="like">
-        <input type="checkbox">
-        <i class="fas fa-heart heart mr-1"
-        :class="{'text-danger':this.isLikedBy}"
-        @click="clickLike">
-        </i>
-      </label>
+    <button
+      type="button"
+      class="btn m-0 p-1 shadow-none"
+    >
+      <i class="fas fa-heart heart mr-1"
+         :class="{'text-danger':this.isLikedBy, 'animated heartBeat fast':this.gotToLike}"
+         @click="clickLike"
+      />
+    </button>
     {{ countLikes }}
   </div>
 </template>
 
 <style>
-    .like [type="checkbox"] {
-      display: none;
-    }
-
-    .heart {
-        color: #e4e4e4;
-        cursor: pointer;
-        user-select: none;
-    }
-
-    .like [type="checkbox"]:checked ~ .heart {
-      animation-name: heart;
-      animation-duration: .6s;
-      animation-fill-mode: forwards;
-    }
-
-    @keyframes heart {
-      0% {
-        transform: scale(0);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-      100% {
-        transform: scale(1);
-        color: red;
-      }
-    }
+  .heart {
+    color: #e4e4e4;
+    user-select: none;
+    cursor: pointer;
+  }
 </style>
 
 <script>
@@ -65,6 +44,7 @@
       return {
         isLikedBy: this.initialIsLikedBy,
         countLikes: this.initialCountLikes,
+        gotToLike: false,
       }
     },
     methods: {
@@ -73,22 +53,21 @@
           alert('いいね機能はログイン中のみ使用できます')
           return
         }
-
         this.isLikedBy
           ? this.unlike()
           : this.like()
       },
       async like() {
         const response = await axios.put(this.endpoint)
-
         this.isLikedBy = true
         this.countLikes = response.data.countLikes
+        this.gotToLike = true
       },
       async unlike() {
         const response = await axios.delete(this.endpoint)
-
         this.isLikedBy = false
         this.countLikes = response.data.countLikes
+        this.gotToLike = false
       },
     },
   }

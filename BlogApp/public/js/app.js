@@ -1963,27 +1963,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     initialIsLikedBy: {
@@ -2005,7 +1984,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       isLikedBy: this.initialIsLikedBy,
-      countLikes: this.initialCountLikes
+      countLikes: this.initialCountLikes,
+      gotToLike: false
     };
   },
   methods: {
@@ -2033,8 +2013,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context.sent;
                 _this.isLikedBy = true;
                 _this.countLikes = response.data.countLikes;
+                _this.gotToLike = true;
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -2058,8 +2039,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context2.sent;
                 _this2.isLikedBy = false;
                 _this2.countLikes = response.data.countLikes;
+                _this2.gotToLike = false;
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -6700,7 +6682,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.like [type=\"checkbox\"] {\n  display: none;\n}\n.heart {\n    color: #e4e4e4;\n    cursor: pointer;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n}\n.like [type=\"checkbox\"]:checked ~ .heart {\n  -webkit-animation-name: heart;\n          animation-name: heart;\n  -webkit-animation-duration: .6s;\n          animation-duration: .6s;\n  -webkit-animation-fill-mode: forwards;\n          animation-fill-mode: forwards;\n}\n@-webkit-keyframes heart {\n0% {\n    transform: scale(0);\n}\n50% {\n    transform: scale(1.1);\n}\n100% {\n    transform: scale(1);\n    color: red;\n}\n}\n@keyframes heart {\n0% {\n    transform: scale(0);\n}\n50% {\n    transform: scale(1.1);\n}\n100% {\n    transform: scale(1);\n    color: red;\n}\n}\n", ""]);
+exports.push([module.i, "\n.heart {\n  color: #e4e4e4;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -39334,15 +39316,20 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("label", { staticClass: "like" }, [
-      _c("input", { attrs: { type: "checkbox" } }),
-      _vm._v(" "),
-      _c("i", {
-        staticClass: "fas fa-heart heart mr-1",
-        class: { "text-danger": this.isLikedBy },
-        on: { click: _vm.clickLike }
-      })
-    ]),
+    _c(
+      "button",
+      { staticClass: "btn m-0 p-1 shadow-none", attrs: { type: "button" } },
+      [
+        _c("i", {
+          staticClass: "fas fa-heart heart mr-1",
+          class: {
+            "text-danger": this.isLikedBy,
+            "animated heartBeat fast": this.gotToLike
+          },
+          on: { click: _vm.clickLike }
+        })
+      ]
+    ),
     _vm._v("\n  " + _vm._s(_vm.countLikes) + "\n")
   ])
 }
@@ -51708,15 +51695,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!*************************************************!*\
   !*** ./resources/js/components/ArticleLike.vue ***!
   \*************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ArticleLike_vue_vue_type_template_id_2ebfe212___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ArticleLike.vue?vue&type=template&id=2ebfe212& */ "./resources/js/components/ArticleLike.vue?vue&type=template&id=2ebfe212&");
 /* harmony import */ var _ArticleLike_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ArticleLike.vue?vue&type=script&lang=js& */ "./resources/js/components/ArticleLike.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ArticleLike_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ArticleLike_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _ArticleLike_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ArticleLike.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/ArticleLike.vue?vue&type=style&index=0&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ArticleLike_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ArticleLike.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/ArticleLike.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -51748,7 +51734,7 @@ component.options.__file = "resources/js/components/ArticleLike.vue"
 /*!**************************************************************************!*\
   !*** ./resources/js/components/ArticleLike.vue?vue&type=script&lang=js& ***!
   \**************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

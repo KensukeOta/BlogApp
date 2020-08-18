@@ -64,9 +64,9 @@
                     @if ($user->followers_count >= 1)
                     <p class="users">
                         @if ($user->path === NULL)
-                        {{ $loop->iteration . ' ' }} <img src="/img/noimage.png"><a href="{{ route('users.home', $user->name) }}" class="text-dark">{{ $user->name }}</a> <span class="follower-ranking_count">{{ $user->followers_count }}</span>
+                        {{ $loop->iteration . ' ' }} <img src="/img/noimage.png" class="mr-1"><a href="{{ route('users.home', $user->name) }}" class="text-dark">{{ $user->name }}</a> <span class="follower-ranking_count">{{ $user->followers_count }}</span>
                         @else
-                        {{ $loop->iteration . ' ' }} <img src="{{ $user->path }}"><a href="{{ route('users.home', $user->name) }}" class="text-dark">{{ $user->name }}</a><span class="follower-ranking_count">{{ $user->followers_count }}</span>
+                        {{ $loop->iteration . ' ' }} <img src="{{ $user->path }}" class="mr-1"><a href="{{ route('users.home', $user->name) }}" class="text-dark">{{ $user->name }}</a><span class="follower-ranking_count">{{ $user->followers_count }}</span>
                         @endif
                     </p>
                     @endif
