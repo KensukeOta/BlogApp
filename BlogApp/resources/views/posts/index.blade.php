@@ -34,7 +34,7 @@
                         @if (Auth::user()->path === NULL)
                         <img src="/img/noimage.png" alt="image" class="user_image">
                         @else
-                        <img src="{{ asset('storage/' . Auth::user()->path) }}" alt="image" class="user_image">
+                        <img src="{{ Auth::user()->path }}" alt="image" class="user_image">
                         @endif
                     </p>
                     <p class="m-0 pb-3 border-bottom"><a href="{{ route('users.home', Auth::user()->name) }}" class="text-muted">{{ Auth::user()->name }}</a></p>
@@ -66,7 +66,7 @@
                         @if ($user->path === NULL)
                         {{ $loop->iteration . ' ' }} <img src="/img/noimage.png"><a href="{{ route('users.home', $user->name) }}" class="text-dark">{{ $user->name }}</a> <span class="follower-ranking_count">{{ $user->followers_count }}</span>
                         @else
-                        {{ $loop->iteration . ' ' }} <img src="{{ asset('storage/' . $user->path) }}"><a href="{{ route('users.home', $user->name) }}" class="text-dark">{{ $user->name }}</a><span class="follower-ranking_count">{{ $user->followers_count }}</span>
+                        {{ $loop->iteration . ' ' }} <img src="{{ $user->path }}"><a href="{{ route('users.home', $user->name) }}" class="text-dark">{{ $user->name }}</a><span class="follower-ranking_count">{{ $user->followers_count }}</span>
                         @endif
                     </p>
                     @endif

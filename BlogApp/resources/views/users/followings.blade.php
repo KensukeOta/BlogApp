@@ -14,7 +14,7 @@
                         @if ($person->path === NULL)
                         <img src="/img/noimage.png" alt="image" class="user_image">
                         @else
-                        <img src="{{ asset('storage/' . $person->path) }}" alt="image" class="user_image">
+                        <img src="{{ $person->path }}" alt="image" class="user_image">
                         @endif
                     </span><a href="{{ route('users.home', $person->name) }}" class="text-dark">{{ $person->name }}</a>
                 </h5>

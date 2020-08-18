@@ -12,7 +12,7 @@
                         @if ($selectUser->path === NULL)
                         <img src="/img/noimage.png" alt="image" style="width: 30%; height: auto;">
                         @else
-                        <img src="{{ asset('storage/' . $selectUser->path) }}" alt="image" style="width: 30%; height: auto;">
+                        <img src="{{ $selectUser->path }}" alt="image" style="width: 30%; height: auto;">
                         @endif
                         <p class="my-3">{{ $selectUser->name }}</p>
                     <div class="status d-flex justify-content-between">

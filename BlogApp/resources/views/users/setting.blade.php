@@ -30,7 +30,7 @@
                             @if (Auth::user()->path === NULL)
                             <img src="/img/noimage.png" alt="image" style="width: 30%; height: auto;">
                             @else
-                            <img src="{{ asset('storage/' . Auth::user()->path) }}" alt="image" style="width: 30%; height: auto;">
+                            <img src="{{ Auth::user()->path }}" alt="image" style="width: 30%; height: auto;">
                             @endif
                             <p class="my-3">{{ Auth::user()->name }}</p>
 
