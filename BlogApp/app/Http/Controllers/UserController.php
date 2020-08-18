@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\User;
 use App\Post;
 
@@ -97,17 +98,33 @@ class UserController extends Controller
     }
 
     
-    public function store(ProfileRequest $request)
-    {
-        $originalImg = $request->path;
+    // public function store(ProfileRequest $request)
+    // {
+    //     $originalImg = $request->path;
         
-        if ($originalImg->isValid()) {
-            $filePath = $originalImg->store('public');
-            Auth::user()->path = str_replace('public/', '', $filePath);
-            Auth::user()->save();
-            return redirect()->route('users.setting', Auth::user())->with('success', '新しいプロフィール画像を登録しました');
-        }
-    }
+    //     if ($originalImg->isValid()) {
+    //         $filePath = $originalImg->store('public');
+    //         Auth::user()->path = str_replace('public/', '', $filePath);
+    //         Auth::user()->save();
+    //         return redirect()->route('users.setting', Auth::user())->with('success', '新しいプロフィール画像を登録しました');
+    //     }
+    // }
+
+    public function store(Request $request)
+  {
+      Auth::user()->name = Auth::user()->name;
+      Auth::user()->email = Auth::user()->email;
+      //s3アップロード開始
+      $image = $request->file('path');
+      // バケットの`myprefix`フォルダへアップロード
+      $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
+      // アップロードした画像のフルパスを取得
+      Auth::user()->path = Storage::disk('s3')->url($path);
+
+      Auth::user()->save();
+
+      return redirect()->route('users.setting', Auth::user())->with('success', '新しいプロフィール画像を登録しました');
+  }
 
     public function logout()
     {
