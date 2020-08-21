@@ -30,3 +30,6 @@
 - Webサーバー：　__Nginx__
 - メールサービス：　__SendGrid__
 - その他言語： __JavaScript__, __PHP7.4__, __HTML/CSS__
+
+## アプリケーションのURL
+- http://blogapp-kensuke.herokuapp.com/
