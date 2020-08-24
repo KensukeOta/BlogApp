@@ -3,14 +3,16 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Post;
+use App\User;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
 
 $factory->define(Post::class, function (Faker $faker) {
     return [
         //
-        'title' => Str::random(10),
-        'body' => Str::random(10),
-        'user_id' => 4,
+        'title' => $faker->text(50),
+        'body' => $faker->text(500),
+        'user_id' => function() {
+            return factory(User::class);
+        }
     ];
 });
