@@ -1,7 +1,3 @@
-vendor/bin/phpunit
-php artisan make:test PostTest
-vendor/bin/phpunit --filter=null
-vendor/bin/phpunit --filter=theuser
-vendor/bin/phpunit --filter=another
+php artisan key:generate --show
 vendor/bin/phpunit
 exit
