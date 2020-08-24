@@ -19,25 +19,44 @@ class PostControllerTest extends TestCase
      */
     use DatabaseTransactions;
     
-    public function testExample()
+    //  トップページへ遷移できるかをテスト
+    public function testIndex()
+    {
+        $response = $this->get(route('posts.index'));
+        $response->assertStatus(200)->assertViewIs('posts.index');
+    }
+
+    //  記事の詳細ページへ遷移できるかをテスト
+    public function testShow()
+    {
+        //  記事のダミーデータを作成
+        $post = factory(Post::class)->create();
+
+        $response = $this->get(route('posts.show', ['post' => $post->id]));
+        $response->assertStatus(200)->assertViewIs('posts.show');
+    }
+
+    //  未ログイン時に記事投稿画面にアクセスしたらログイン画面へリダイレクトするかをテスト
+    public function testGuestCreate()
+    {
+        $response = $this->get(route('posts.new'));
+        $response->assertRedirect(route('login'));
+    }
+
+    //  ユーザーがログインしている場合のみ、記事投稿画面に遷移するかをテスト
+    public function testAuthCreate()
     {
         //  ユーザーのダミーデータを作成
         $user = factory(User::class)->create();
-        //  記事のダミーデータを作成
-        $post = factory(Post::class)->create();
-        
-        //  トップページへ遷移するかをテスト
-        $response = $this->get(route('posts.index'));
-        $response->assertStatus(200)->assertViewIs('posts.index');
-        //  ユーザーがログインしている場合のみ、記事投稿画面に遷移するかをテスト
+
         $response = $this->actingAs($user)->get(route('posts.new'));
         $response->assertStatus(200)->assertViewIs('posts.new');
-        //  記事の詳細ページへ遷移できるかをテスト
-        $response = $this->get(route('posts.show', ['post' => $post->id]));
-        $response->assertStatus(200)->assertViewIs('posts.show');
-        //  記事検索ページへ遷移できるかをテスト
+    }
+
+    //  記事検索ページへ遷移できるかをテスト
+    public function testSearch()
+    {
         $response = $this->get(route('posts.search'));
         $response->assertStatus(200)->assertViewIs('posts.search');
-
     }
 }

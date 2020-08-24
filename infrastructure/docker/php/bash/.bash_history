@@ -1,27 +1,8 @@
-php artisant test
-php artisan test
-php artisan test
-exit
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-php artisan test
-eit
+php artisan make:test PostTest
+vendor/bin/phpunit --filter=null
+vendor/bin/phpunit --filter=theuser
+vendor/bin/phpunit --filter=another
+vendor/bin/phpunit --filter=another
+vendor/bin/phpunit
+vendor/bin/phpunit
 exit
