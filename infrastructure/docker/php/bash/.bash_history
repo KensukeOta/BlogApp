@@ -6,3 +6,6 @@ vendor/bin/phpunit --filter=another
 vendor/bin/phpunit
 vendor/bin/phpunit
 exit
+php artisan key:generate --show
+vendor/bin/phpunit
+exit
