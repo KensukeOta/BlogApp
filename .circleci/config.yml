@@ -6,8 +6,8 @@ jobs:
     steps:
       - checkout
       - run: composer install -n --prefer-dist --working-dir=./BlogApp
-      - run: npm ci --working-dir=./BlogApp
-      - run: npm run dev --working-dir=./BlogApp
+      - run: npm ci
+      - run: npm run dev
       - run: 
          name: php test
          command: vendor/bin/phpunit
