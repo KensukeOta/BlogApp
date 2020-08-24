@@ -8,6 +8,6 @@ jobs:
       - run: composer install -n --prefer-dist --working-dir=./BlogApp
       - run: npm ci --working-dir=./BlogApp
       - run: npm run dev --working-dir=./BlogApp
-      - run: --working-dir=./BlogApp
-          name: php test
-          command: vendor/bin/phpunit
+      - run: 
+         name: php test
+         command: vendor/bin/phpunit
