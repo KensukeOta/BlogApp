@@ -27,6 +27,7 @@
 - データベース：　__MySQL8.0__
 - Webサーバー：　__Nginx__
 - メールサービス：　__SendGrid__
+- バージョン管理ツール：　__Git__ / __GitHub__
 - その他言語： __JavaScript__, __PHP7.4__, __HTML/CSS__
 
 ## アプリケーションのURL
