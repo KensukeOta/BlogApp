@@ -18,13 +18,13 @@ Route::name('posts.')->group(function () {
     Route::prefix('posts')->group(function () {
         Route::get('/new', 'PostController@new')->middleware('auth')->name('new');
         Route::post('/new', 'PostController@create')->name('create');
+        Route::get('/search', 'PostController@search')->name('search');
+        Route::post('/search', 'PostController@result')->name('result');
         Route::get('/{post}', 'PostController@show')->where('post', '[0-9]+')->name('show');
         Route::get('/{post}/edit', 'PostController@edit')->middleware('auth')->name('edit');
         Route::patch('/{post}', 'PostController@update')->middleware('auth')->name('update');
         Route::delete('/{post}', 'PostController@destroy')->name('destroy');
         Route::post('/{post}', 'CommentController@create')->name('comment');
-        Route::get('/search', 'PostController@search')->name('search');
-        Route::post('/search', 'PostController@result')->name('result');
         Route::put('/{post}/like', 'PostController@like')->name('like')->middleware('auth');
         Route::delete('/{post}/like', 'PostController@unlike')->name('unlike')->middleware('auth');
     });
