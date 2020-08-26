@@ -11,9 +11,6 @@
 - ページネーション機能
 - ユーザー登録機能
 - ユーザーログイン機能
-- Twitterアカウント認証機能
-- Googleアカウント認証機能
-- GitHubアカウント認証機能
 - メール送信機能（パスワード再設定機能）
 - フォロー・フォロワー機能（Vue.jsで実装、非同期通信）
 - 「いいね」機能（Vue.jsで実装、非同期通信）
@@ -23,13 +20,15 @@
 - 単体テスト機能
 
 ## 使っている技術・ツール
-- 開発環境構築： __Docker__
+- 開発環境： __Docker__, __docker-compose__
+- 本番環境： __AWS（VPC, EC2, RDS, S3, Route53）__
 - フレームワーク： __Laravel7__
 - フロントエンド： __Vue.js__, __Bootstrap5 alpha__
 - データベース：　__MySQL8.0__
 - Webサーバー：　__Nginx__
 - メールサービス：　__SendGrid__
+- バージョン管理ツール：　__Git__ / __GitHub__
 - その他言語： __JavaScript__, __PHP7.4__, __HTML/CSS__
 
 ## アプリケーションのURL
-- http://blogapp-kensuke.herokuapp.com/
+- http://blogapp-kensuke.work/
