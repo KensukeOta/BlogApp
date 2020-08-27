@@ -1,0 +1,99 @@
+nav a {
+    font-family: 'Poppins', sans-serif;
+}
+
+.categories {
+    color: black;
+    font-size: 19px;  
+    font-weight: bold;
+    padding: 8px;
+    margin: 16px 0;
+    text-align: left;
+    border-radius: 16px;
+}
+
+.categories:hover {
+    color: #38C172;
+    background: rgba(56,193,114, 0.2)
+}
+
+.articles .article {
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+}
+
+.articles .article:first-child {
+    border-top: none;
+}
+
+.article-title {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.article-body {
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.fa-edit, .fa-trash-alt {
+    color: #333;
+}
+
+.fa-edit:hover, .fa-trash-alt:hover {
+    color: #38C172!important;
+}
+
+.profile {
+    margin-top: 69px;
+    text-align: center;
+}
+
+.guest {
+    margin-top: 69px;
+}
+
+.post-user_image {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.user_image {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.ranking {
+    border: none;
+    padding: 16px;
+
+}
+
+.ranking .users, .ranking .tags {
+    position: relative;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 8px;
+}
+
+.ranking img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.follower-ranking_count, .tags-ranking_count {
+    position: absolute;
+    right: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: right;
+}
+
+.pagination {
+    justify-content: center;
+}
