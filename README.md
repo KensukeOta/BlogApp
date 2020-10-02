@@ -32,3 +32,4 @@
 
 ## アプリケーションのURL
 - http://blogapp-kensuke.work/
+- http://blogapp-kensuke.herokuapp.com/
